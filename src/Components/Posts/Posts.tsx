@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import postsService, {
   Post,
 } from "../../api/Services/PostsService/PostsService";
@@ -15,6 +16,10 @@ const Posts = () => {
     } catch (error) {}
   };
 
+  // useEffect(() => {
+  //   handleGetAllPosts();
+  // }, []);
+
   return (
     <div className="PostsList">
       <h2> Posts List </h2>
@@ -26,9 +31,9 @@ const Posts = () => {
 
         {posts?.map((post) => {
           return (
-            <p key = {post.id}>
-              {post.id} - {post.title}
-            </p>
+            <div key={post.id} className="PostId">
+              <Link to={`/posts/${post.id}`}>{post.title}</Link>
+            </div>
           );
         })}
       </div>

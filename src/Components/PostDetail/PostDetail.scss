@@ -1,0 +1,22 @@
+.PostDetail {
+    background-color: var(--inverted-bg-color);
+    font:var(--font-m);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+
+    h2{
+        color: var(--secondary-color);
+        font:var(--font-l);
+        text-align: center;
+    }
+    p {
+        color: var(--secondary-color);
+        padding: 15px;
+        font:var(--font-m);
+        text-align: center;
+    }
+}
