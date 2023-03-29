@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    padding: 0;
+}
+
+.PostsList {
+    color: var(--inverted-primary-color);
+    font-size: 25px;
+    padding: 10px;
+    text-align: center;
+    font: var(--font-l);
+}
+
+.Posts {
+    p {
+        border-radius: 5px;
+        margin-bottom: 7px;
+        font-size: 20px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    Button {
+        margin: 10px 0;
+    }
+
+}

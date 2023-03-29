@@ -1,0 +1,13 @@
+@mixin flex($display, $alignItems, $justifyContent) {
+    display: $display;
+    align-items: $alignItems;
+    justify-content:$justifyContent
+}
+// @include mixinName 
+
+%hello { 
+    background-color: red;
+    color: blue;
+    padding: 30px;
+}
+// @extend modelName

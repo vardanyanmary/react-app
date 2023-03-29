@@ -1,0 +1,33 @@
+// .AppLink{
+//     width: 31.33%;
+//     color: var(--primary-color);
+//     background-color: var(--bg-color);    
+//     display:flex;
+//     flex-direction: column;
+//     padding: 8px 15px;
+//     margin: 0 ;
+//     list-style:none;
+//     width: 100%;
+//     text-align: center;
+//     font: var(--font-l); 
+// }
+
+// // .AppLinkLi {
+// //     padding: 3px 6px;
+// //     margin-left: 15px;
+// //     color: var(--primary-color);
+// //     background-color: var(--bg-color);
+// // }
+
+// .AppLinkLi:hover{
+//     background-color: var(--primary-color);
+//     color: var(--bg-color);
+// }
+
+.AppLink {
+    padding: 3px 6px;
+    margin-left: 5px;
+    color: var(--primary-color);
+    background-color: var(--inverted-bg-color);
+    font: var(--font-l);
+}
