@@ -1,10 +1,5 @@
 import { api } from "../../api";
-
-export interface Post {
-  id: number;
-  title: string;
-  body: string;
-}
+import { Post } from "./types";
 
 class PostService {
   async getAllPosts() {

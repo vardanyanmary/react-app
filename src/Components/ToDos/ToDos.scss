@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    padding: 0;
+}
+
+.ToDosList {
+    color: var(--secondary-color);
+    font-size: 25px;
+    padding: 10px;
+    text-align: center;
+    font: var(--font-l);
+}
+
+.ToDos {
+    Button {
+        margin: 10px 0;
+    }
+}
+
+.ToDoId {
+    margin-bottom: 15px;
+    font-size: var(--font-m);
+    border-bottom: 1px solid var(--secondary-color);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

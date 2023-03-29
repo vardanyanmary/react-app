@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import postsService, {Post} from "../../api/Services/PostsService/PostsService";
+import postsService from "../../api/Services/PostsService/PostsService";
+import { Post } from "../../api/Services/PostsService/types";
 import "./PostDetail.scss";
 
 const PostDetail = () => {
