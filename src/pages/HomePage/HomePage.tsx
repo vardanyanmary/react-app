@@ -1,11 +1,18 @@
-import './HomePage.scss'
+import Content from "../../Components/Content/Content";
 
-const HomePage = () => {
-    return(
-        <div className='HomePage'>
-
-        </div>
-    );
+export interface Data {
+    content: string;
 }
 
-export default HomePage
+const data: Data = {
+    content: ' CONTENT ',
+};
+
+export const HomePage = () => {
+
+    return (
+        <>
+            <Content content={data.content} />
+        </>
+    )
+}

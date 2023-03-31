@@ -2,9 +2,11 @@ import PostDetail from "../pages/PostDetail/PostDetail";
 import Posts from "../pages/PostsPage/PostsPage";
 import ToDos from "../pages/ToDos/ToDos";
 import ToDoSinglePage from "../pages/ToDoSinglePage/ToDoSinglePage";
-import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import { NotFound } from "../pages/NotFound/NotFound";
+import { HomePage } from "../pages/HomePage/HomePage";
+import CommentsPage from "../pages/CommentsPage/CommentsPage";
+import CommentSinglePage from "../pages/CommentSinglePage/CommentSinglePage";
 
 export const privateRoutes =[
   {
@@ -26,6 +28,14 @@ export const privateRoutes =[
   {
     path: "/todos/:id",
     element: <ToDoSinglePage />,
+  },
+  {
+    path: "/comments",
+    element: <CommentsPage />,
+  }, 
+  {
+    path: "/comments/:id",
+    element: <CommentSinglePage />,
   },
   {
     path: "*",

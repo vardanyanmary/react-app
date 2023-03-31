@@ -1,0 +1,50 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.Content{
+    margin-top: 45px;
+}
+
+.ContentP{
+    background-color: var(--bg-color);
+    color:var(--inverted-bg-color);
+    font-size: 35px;
+    padding: 10px;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.Content p{
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+
+.Content button{
+    display: flex;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--secondary-button-color);
+    color: var(--primary-button-color);
+    cursor: pointer;
+    margin: 0 auto;
+    margin-top: 12px;
+    width: 25%;
+    justify-content: center;
+}
+
+.Content button:hover {
+    background-color: var(--primary-button-color);
+    color: var(--secondary-button-color);
+}
+
+.ContentInputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}

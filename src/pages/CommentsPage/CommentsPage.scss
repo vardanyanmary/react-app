@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    padding: 0;
+}
+
+.CommentsList {
+    color: var(--secondary-color);
+    font-size: 25px;
+    padding: 10px;
+    text-align: center;
+    font: var(--font-l);
+}
+
+.commentsP {
+    color: var(--inverted-secondary-color);
+    padding: 15px;
+    font: var(--font-m);
+    text-align: center;
+}
