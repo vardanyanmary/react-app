@@ -1,32 +1,34 @@
 import { Link, redirect, useParams } from "react-router-dom";
-import { usePost } from "../../Components/hooks/usePost";
+import { usePost } from "../../Components/hooks/PostHooks/usePost";
 import PostCard from "../../Components/PostCard/PostCard";
-import './PostDetail.scss';
+import "./PostDetail.scss";
 
 interface PostPageParams {
-  id: string
+  id: string;
 }
 
 const PostDetail = () => {
-
-  const { id } = useParams<Partial<PostPageParams>>()
-  const { post } = usePost(Number(id)) 
+  const { id } = useParams<Partial<PostPageParams>>();
+  const { post } = usePost(Number(id));
 
   if (isNaN(Number(id))) {
-       redirect('posts')
+    redirect("posts");
   }
 
   return (
     <div className="PostDetail">
-        {post? (<>
-                 <PostCard post={post} />
-                 <Link to={`/posts`}> Back </Link> 
-                </>)
-                : <p> post not found</p>
-        }
+      {post ? (
+        <>
+          <PostCard post={post} />
+          <Link to={`/posts`}> Back </Link>
+        </>
+      ) : (
+        <p> Post not found</p>
+      )}
     </div>
-)
- {/* return (
+  );
+  {
+    /* return (
     <div className="PostDetail">
       <div>
         {post
@@ -40,7 +42,8 @@ const PostDetail = () => {
       </div>
     </div>
   );
-};*/}
-}
+};*/
+  }
+};
 
 export default PostDetail;

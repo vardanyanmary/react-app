@@ -1,4 +1,4 @@
-import { usePosts } from "../../Components/hooks/usePosts";
+import { usePosts } from "../../Components/hooks/PostHooks/usePosts";
 import PostCard from "../../Components/PostCard/PostCard";
 import "./PostsPage.scss";
 

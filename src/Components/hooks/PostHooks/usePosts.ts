@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import postsService from "../../api/Services/PostsService/PostsService";
-import { Post } from "../../api/Services/PostsService/types";
+import postsService from "../../../api/Services/PostsService/PostsService";
+import { Post } from "../../../api/Services/PostsService/types";
 
 export function usePosts() {
 

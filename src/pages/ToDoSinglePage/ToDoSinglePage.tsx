@@ -1,39 +1,33 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import toDoService from "../../api/Services/ToDosService/ToDosService";
-import { ToDo } from "../../api/Services/ToDosService/types";
+import { Link, redirect, useParams } from "react-router-dom";
+import { useToDo } from "../../Components/hooks/ToDoHooks/useToDo";
 import "./ToDoSinglePage.scss";
+import ToDoCard from "../../Components/ToDoCard/ToDoCard";
+
+interface ToDoSinglePageProps {
+  id: string;
+}
 
 const ToDoSinglePage = () => {
-  const { todoId } = useParams<{ todoId: string }>();
-  const [todo, setToDo] = useState<ToDo>();
-  const singleToDo = async () => {
-    const todo = await toDoService.getToDoById(Number(todoId));
-    if (todo) {
-      setToDo(todo);
-    }
-  };
-  useEffect(() => {
-    singleToDo();
-  }, [todoId]);
+  const { id } = useParams<Partial<ToDoSinglePageProps>>();
+  const { todo } = useToDo(Number(id));
 
-  if (!todo) {
-    return (
-      <div className="ToDoSinglePage">
-        <p>Loading...</p>
-      </div>
-    );
+  if (isNaN(Number(id))) {
+    redirect('todos');
   }
 
   return (
     <div className="ToDoSinglePage">
-      <div>
-        <h2>{todo.id}</h2>
-        <p>{todo.title}</p>
-        <Link to={`/todos`}> Back </Link>
-      </div>
+      {todo ? (
+        <>
+          <ToDoCard todo={todo}/>
+          <Link to={`/todos`}> Back </Link>
+        </>
+      ) : (
+        <p> Todo not found</p>
+      )}
     </div>
   );
+  
 };
 
 export default ToDoSinglePage;

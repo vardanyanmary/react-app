@@ -1,6 +1,6 @@
 import { useCallback, useState, useEffect } from "react";
-import postsService from "../../api/Services/PostsService/PostsService";
-import { Post } from "../../api/Services/PostsService/types";
+import postsService from "../../../api/Services/PostsService/PostsService";
+import { Post } from "../../../api/Services/PostsService/types";
 
 export function usePost(postId: number) {
   // const [post, setPost] = useState<Post>()
