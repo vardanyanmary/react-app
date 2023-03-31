@@ -1,15 +1,22 @@
-import PostDetail from "../Components/PostDetail/PostDetail";
-import Posts from "../Components/Posts/Posts";
-import ToDos from "../Components/ToDos/ToDos";
-import ToDoSinglePage from "../Components/ToDoSinglePage/ToDoSinglePage";
+import PostDetail from "../pages/PostDetail/PostDetail";
+import Posts from "../pages/PostsPage/PostsPage";
+import ToDos from "../pages/ToDos/ToDos";
+import ToDoSinglePage from "../pages/ToDoSinglePage/ToDoSinglePage";
+import HomePage from "../pages/HomePage/HomePage";
+import LoginPage from "../pages/LoginPage/LoginPage";
+import { NotFound } from "../pages/NotFound/NotFound";
 
-export const routes =[
+export const privateRoutes =[
+  {
+    path: "/",
+    element: <HomePage />,
+  }, 
   {
     path: "/posts",
     element: <Posts />,
   }, 
   {
-    path: "/posts/:postId",
+    path: "/posts/:id",
     element: <PostDetail />,
   },
   {
@@ -17,7 +24,22 @@ export const routes =[
     element: <ToDos />,
   }, 
   {
-    path: "/todos/:todoId",
+    path: "/todos/:id",
     element: <ToDoSinglePage />,
-  }
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
+]
+
+export const publicRoutes = [
+  {
+    path: "/login",
+    element: <LoginPage />,
+  }, 
+  {
+    path: "*",
+    element: <NotFound />,
+  },
 ]

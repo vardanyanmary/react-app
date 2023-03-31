@@ -1,15 +1,18 @@
-import { Link } from 'react-router-dom'
-import './AppLink.scss'
+import { Link } from "react-router-dom";
+
+import "./AppLink.scss";
 
 interface AppLinkProps {
-    to: string;
-    children: React.ReactNode
+  to: string;
+  children: React.ReactNode;
 }
 
-export const AppLink = ({ children, to }: AppLinkProps) => {
-    return (
-        <span className='AppLink'>
-            <Link to={to} >{children}</Link>
-        </span>
-    )
-}
+const AppLink = ({ to, children }: AppLinkProps) => {
+  return (
+    <span className="AppLink">
+      <Link to={to}> {children} </Link>
+    </span>
+  );
+};
+
+export default AppLink;

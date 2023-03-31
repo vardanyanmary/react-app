@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import toDoService from "../../api/Services/ToDosService/ToDosService"
 import { ToDo } from "../../api/Services/ToDosService/types"
-import Button from "../UI/Button/Button"
+import Button from "../../Components/UI/Button/Button"
 import './ToDos.scss'
 
 const ToDos = () => {

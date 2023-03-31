@@ -7,28 +7,31 @@ import "./ToDoSinglePage.scss";
 const ToDoSinglePage = () => {
   const { todoId } = useParams<{ todoId: string }>();
   const [todo, setToDo] = useState<ToDo>();
-
-  useEffect(() => {
-    const singleToDo = async () => {
-      const todo = await toDoService.getToDoById(Number(todoId));
+  const singleToDo = async () => {
+    const todo = await toDoService.getToDoById(Number(todoId));
+    if (todo) {
       setToDo(todo);
-    };
+    }
+  };
+  useEffect(() => {
     singleToDo();
   }, [todoId]);
 
+  if (!todo) {
+    return (
+      <div className="ToDoSinglePage">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="ToDoSinglePage">
-      {todo ? (
-        <>
-          <div>
-            <h2>{todo.id}</h2>
-            <p>{todo.title}</p>
-            <Link to={`/todos`}> Back </Link>
-          </div>
-        </>
-      ) : (
-        <p>Loading...</p>
-      )}
+      <div>
+        <h2>{todo.id}</h2>
+        <p>{todo.title}</p>
+        <Link to={`/todos`}> Back </Link>
+      </div>
     </div>
   );
 };
