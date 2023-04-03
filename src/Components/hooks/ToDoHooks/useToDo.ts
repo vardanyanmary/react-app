@@ -1,13 +1,13 @@
 import { useCallback, useState, useEffect } from "react";
-import postsService from "../../../api/Services/PostsService/PostsService";
-import { Post } from "../../../api/Services/PostsService/types";
+import { ToDo } from "../../../api/Services/ToDosService/types";
+import toDoService from "../../../api/Services/ToDosService/ToDosService";
 
 export function useToDo(todoId: number) {
-  const [todo, setToDo] = useState<Post>();
+  const [todo, setToDo] = useState<ToDo>();
 
   const getToDo = useCallback(async (todoId: number) => {
     try {
-      const todo = await postsService.getPostById(todoId);
+      const todo = await toDoService.getToDoById(todoId);
       setToDo(todo);
     } catch (error) {
       console.error(error);

@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import Content from "../../Components/Content/Content";
 
 export interface Data {
@@ -9,6 +10,9 @@ const data: Data = {
 };
 
 export const HomePage = () => {
+
+    const store = useSelector((store) => store)
+    console.log(store, 'store');
 
     return (
         <>

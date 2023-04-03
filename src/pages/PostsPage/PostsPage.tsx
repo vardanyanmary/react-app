@@ -6,15 +6,15 @@ const Posts = () => {
   const { posts, navigateSinglePostPage } = usePosts()
 
   if (!posts) {
-      return (
-          <p className="postsP">
-              Loading...
-          </p>
-      )
+    return (
+      <p className="postsP">
+        Loading...
+      </p>
+    );
   }
 
-  // <div className="Posts">
   {
+    // <div className="Posts">
     /* <Button type="secondary" onClick={handleGetAllPosts}>
           Get Posts
         </Button> */
@@ -24,7 +24,7 @@ const Posts = () => {
     <div className="PostsList">
       <h2> Posts List </h2>
       <div className="Posts">
-        {posts.map((post) =>
+        {posts?.map((post) =>
                 <PostCard post={post} key={post.id} navigateSinglePostPage={navigateSinglePostPage} />
             )}
       </div>

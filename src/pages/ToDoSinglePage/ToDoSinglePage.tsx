@@ -19,7 +19,7 @@ const ToDoSinglePage = () => {
     <div className="ToDoSinglePage">
       {todo ? (
         <>
-          <ToDoCard todo={todo}/>
+          <ToDoCard todo = {todo}/>
           <Link to={`/todos`}> Back </Link>
         </>
       ) : (

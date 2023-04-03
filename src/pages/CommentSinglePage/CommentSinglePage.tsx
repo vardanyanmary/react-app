@@ -1,7 +1,7 @@
 import { Link, redirect, useParams } from "react-router-dom";
 import { useComment } from "../../Components/hooks/CommentHooks/useComment";
 import CommentCard from "../../Components/CommentCard/CommentCard";
-import './CommentSinglePage'
+import './CommentSinglePage.scss'
 
 interface CommentSinglePageProps {
   id: string; //string , because from link

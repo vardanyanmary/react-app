@@ -7,16 +7,17 @@ import { NotFound } from "../pages/NotFound/NotFound";
 import { HomePage } from "../pages/HomePage/HomePage";
 import CommentsPage from "../pages/CommentsPage/CommentsPage";
 import CommentSinglePage from "../pages/CommentSinglePage/CommentSinglePage";
+import { CounterPage } from "../pages/Counter/CounterPage";
 
-export const privateRoutes =[
+export const privateRoutes = [
   {
     path: "/",
     element: <HomePage />,
-  }, 
+  },
   {
     path: "/posts",
     element: <Posts />,
-  }, 
+  },
   {
     path: "/posts/:id",
     element: <PostDetail />,
@@ -24,7 +25,7 @@ export const privateRoutes =[
   {
     path: "/todos",
     element: <ToDos />,
-  }, 
+  },
   {
     path: "/todos/:id",
     element: <ToDoSinglePage />,
@@ -32,24 +33,28 @@ export const privateRoutes =[
   {
     path: "/comments",
     element: <CommentsPage />,
-  }, 
+  },
   {
     path: "/comments/:id",
     element: <CommentSinglePage />,
   },
   {
+    path: "/counter",
+    element: <CounterPage />,
+  },
+  {
     path: "*",
     element: <NotFound />,
   },
-]
+];
 
 export const publicRoutes = [
   {
     path: "/login",
     element: <LoginPage />,
-  }, 
+  },
   {
     path: "*",
     element: <NotFound />,
   },
-]
+];
