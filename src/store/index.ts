@@ -4,13 +4,15 @@ import  {counterReducer}  from "./features/counter/reducers/counterReducer";
 import { postsReducer } from "./features/posts/reducers/postsReducer";
 import { postReducer } from "./features/posts/reducers/postReducer";
 import { todosReducer } from "./features/todos/reducers/todosReducer";
+import { todoReducer } from "./features/todos/reducers/todoReducer";
 
 const reducers = combineReducers({
     settings : settingsReducer,
     counter: counterReducer ,
     posts: postsReducer , 
     post : postReducer,
-    todos: todosReducer
+    todos: todosReducer,
+    todo: todoReducer
 })
 
 export const store = createStore(reducers)
