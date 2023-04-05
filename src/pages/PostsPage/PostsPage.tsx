@@ -3,14 +3,21 @@ import PostCard from "../../Components/PostCard/PostCard";
 import "./PostsPage.scss";
 
 const Posts = () => {
-  const { posts, navigateSinglePostPage } = usePosts()
+  const { posts, navigateSinglePostPage, isLoading, error } = usePosts()
 
-  if (!posts) {
-    return (
-      <p className="postsP">
-        Loading...
-      </p>
-    );
+  if (isLoading) {
+      return (
+          <div className="PostsPage">
+              loading...
+          </div>
+      )
+  }
+  if (error) {
+      return (
+          <div className="PostsPage">
+              {error}
+          </div>
+      )
   }
 
   {

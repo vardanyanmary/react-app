@@ -1,33 +1,38 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import postsService from "../../../api/Services/PostsService/PostsService";
-import { Post } from "../../../api/Services/PostsService/types";
 import { useDispatch, useSelector } from "react-redux";
-import { initPosts } from "../../../store/features/post/reducers/postReducer";
+import {
+  getPostsData,
+  getPostsError,
+  getPostsLoading,
+} from "../../../store/features/posts/selectors/posts";
+import {
+  initPostsAction,
+  setGetAllPostsErrorAction,
+  setLoading,
+} from "../../../store/features/posts/actions/postsActions";
 
 export function usePosts() {
   const navigate = useNavigate();
-  // console.log("1");
-  // const [posts, setPosts] = useState<Post[]>()
-
   const dispatch = useDispatch();
-  // console.log("2");
 
-  const posts = useSelector(
-    (state: { post: { posts: Post[] } }) => state.post.posts
-  );
-  // console.log("3");
+  const data = useSelector(getPostsData);
+  const isLoading = useSelector(getPostsLoading);
+  const error = useSelector(getPostsError);
 
   const getAllPosts = useCallback(async () => {
+    dispatch(setLoading(true));
+    dispatch(setGetAllPostsErrorAction(undefined));
     try {
       const posts = await postsService.getAllPosts();
-      dispatch({
-        type: initPosts,
-        payload: posts,
-      });
-      // setPosts(posts);
+      // console.log(posts);
+      dispatch(initPostsAction(posts));
     } catch (error) {
-      console.error(error);
+      console.warn(error);
+      dispatch(setGetAllPostsErrorAction("error message"));
+    } finally {
+      dispatch(setLoading(false));
     }
   }, [dispatch]);
 
@@ -39,12 +44,16 @@ export function usePosts() {
   );
 
   useEffect(() => {
-    // console.log(posts);
-    getAllPosts();
-  }, []);
+    if (!data.length) {
+      getAllPosts();
+    }
+  }, [getAllPosts, data]);
 
   return {
-    posts,
+    posts: data,
     navigateSinglePostPage,
+    isLoading,
+    error,
   };
 }
+

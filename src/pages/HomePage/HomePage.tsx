@@ -11,8 +11,8 @@ const data: Data = {
 
 export const HomePage = () => {
 
-    const store = useSelector((store) => store)
-    console.log(store, 'store');
+    // const store = useSelector((store) => store)
+    // console.log(store, 'store');
 
     return (
         <>

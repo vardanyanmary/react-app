@@ -1,40 +1,45 @@
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import postsService from "../../../api/Services/PostsService/PostsService";
-import { Post } from "../../../api/Services/PostsService/types";
+import { useDispatch, useSelector } from "react-redux";
+import { getPostData } from "../../../store/features/posts/selectors/post";
+import { initPostAction } from "../../../store/features/posts/actions/postActions";
 
 export function usePost(postId: number) {
-  // const [post, setPost] = useState<Post>()
-
-  // const getPost = useCallback(async (postId: number) => {
-  //     try {
-  //         const post = await postsService.getPostById(postId)
-  //         setPost(post)
-  //     } catch (error) {
-  //         console.error(error)
-  //     }
-  // }, [])
-
-  // useEffect(() => {
-  //     getPost(postId)
-  // }, [getPost, postId])
-
-  const [post, setPost] = useState<Post>();
+  const dispatch = useDispatch();
+  const data = useSelector(getPostData);
 
   const getPost = useCallback(async (postId: number) => {
     try {
       const post = await postsService.getPostById(postId);
-      setPost(post);
+      // console.log(post);
+      dispatch(initPostAction(post));
     } catch (error) {
       console.error(error);
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
-    getPost(postId);
-  }, [getPost, postId]);
+    if (!data.id || data.id !== postId) {
+      getPost(postId);
+    }
+  }, [getPost, postId, data.id]);
 
   return {
     getPost,
-    post,
+    post: data,
   };
 }
+
+// const [post, setPost] = useState<Post>()
+// const getPost = useCallback(async (postId: number) => {
+//     try {
+//         const post = await postsService.getPostById(postId)
+//         setPost(post)
+//     } catch (error) {
+//         console.error(error)
+//     }
+// }, [])
+
+// useEffect(() => {
+//     getPost(postId)
+// }, [getPost, postId])
