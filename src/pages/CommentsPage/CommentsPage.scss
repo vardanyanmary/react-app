@@ -21,3 +21,12 @@ ul {
     font: var(--font-m);
     text-align: center;
 }
+
+.CommentsPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--primary-color);
+    font: var(--font-xl);
+}

@@ -5,6 +5,7 @@ import { postsReducer } from "./features/posts/reducers/postsReducer";
 import { postReducer } from "./features/posts/reducers/postReducer";
 import { todosReducer } from "./features/todos/reducers/todosReducer";
 import { todoReducer } from "./features/todos/reducers/todoReducer";
+import { commentsReducer } from "./features/comments/reducers/commentsReducer";
 
 const reducers = combineReducers({
     settings : settingsReducer,
@@ -12,7 +13,9 @@ const reducers = combineReducers({
     posts: postsReducer , 
     post : postReducer,
     todos: todosReducer,
-    todo: todoReducer
+    todo: todoReducer,
+    comments: commentsReducer,
+
 })
 
 export const store = createStore(reducers)

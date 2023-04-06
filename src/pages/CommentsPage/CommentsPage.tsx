@@ -3,10 +3,15 @@ import { useComments } from "../../Components/hooks/CommentHooks/useComments";
 import "./CommentsPage.scss";
 
 const CommentsPage = () => {
-  const { comments, navigateSingleCommentPage } = useComments();
+  const { comments, navigateSingleCommentPage, isLoading, error } = useComments();
 
-  if (!comments) {
-    return <p className="commentsP">Loading...</p>;
+
+  if (isLoading) {
+    return <div className="CommentsPage">Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="CommentsPage">{error}</div>;
   }
 
   return (
