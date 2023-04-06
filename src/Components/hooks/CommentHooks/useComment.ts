@@ -1,28 +1,33 @@
-import { useCallback, useState, useEffect } from "react";
-import postsService from "../../../api/Services/PostsService/PostsService";
-import { Post } from "../../../api/Services/PostsService/types";
-import { Comment } from "../../../api/Services/CommentsService/type";
+import { useCallback, useEffect } from "react";
 import commentsService from "../../../api/Services/CommentsService/CommentsService";
+import { useDispatch, useSelector } from "react-redux";
+import { getCommentData } from "../../../store/features/comments/selectors/comment";
+import { initCommentAction } from "../../../store/features/comments/actions/commentActions";
 
 export function useComment(commentId: number) {
+  const dispatch = useDispatch();
+  const data = useSelector(getCommentData);
 
-const [comment, setComment] = useState<Comment>()
-
-  const getComment= useCallback(async (commentId: number) => {
-    try {
-      const comment = await commentsService.getCommentById(commentId);
-      setComment(comment);
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+  const getComment = useCallback(
+    async (commentId: number) => {
+      try {
+        const comment = await commentsService.getCommentById(commentId);
+        dispatch(initCommentAction(comment));
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
-    getComment(commentId);
-  }, [getComment, commentId]);
+    if (!data.id || data.id !== commentId) {
+      getComment(commentId);
+    }
+  }, [getComment, commentId, data.id]);
 
   return {
     getComment,
-    comment,
+    comment: data,
   };
 }
