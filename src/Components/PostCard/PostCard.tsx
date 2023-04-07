@@ -3,7 +3,7 @@ import "./PostCard.scss";
 
 interface PostCardProps {
   post: Post;
-  navigateSinglePostPage?: (postId: number) => void;
+  navigateSinglePostPage?: (post: Post) => void;
 }
 
 const PostCard = ({ post, navigateSinglePostPage }: PostCardProps) => {
@@ -11,13 +11,13 @@ const PostCard = ({ post, navigateSinglePostPage }: PostCardProps) => {
     return (
       <p
         className="PostCard withNavigation"
-        onClick={() => navigateSinglePostPage(post.id)}
+        onClick={() => navigateSinglePostPage(post)}
       >
         {post.title}
       </p>
     );
   }
-  
+
   return (
     <div className="PostCard">
       <h2>{post.title}</h2>

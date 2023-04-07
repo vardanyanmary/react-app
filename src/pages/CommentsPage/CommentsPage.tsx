@@ -1,10 +1,22 @@
 import CommentCard from "../../Components/CommentCard/CommentCard";
-import { useComments } from "../../Components/hooks/CommentHooks/useComments";
+import { useComments } from "../../Components/hooks/useComments";
 import "./CommentsPage.scss";
+import { useEffect } from "react";
 
 const CommentsPage = () => {
-  const { comments, navigateSingleCommentPage, isLoading, error } = useComments();
+  const {
+    comments,
+    getAllComments,
+    navigateSingleCommentPage,
+    isLoading,
+    error,
+  } = useComments();
 
+  useEffect(() => {
+    if (!comments.length) {
+      getAllComments();
+    }
+  }, [getAllComments, comments]);
 
   if (isLoading) {
     return <div className="CommentsPage">Loading...</div>;

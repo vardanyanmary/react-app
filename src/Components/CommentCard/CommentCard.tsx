@@ -1,9 +1,9 @@
 import { Comment } from "../../api/Services/CommentsService/type";
-import './CommentCard.scss'
+import "./CommentCard.scss";
 
 interface CommentCardProps {
   comment: Comment;
-  navigateSingleCommentPage?: (commentId: number) => void;
+  navigateSingleCommentPage?: (comment: Comment) => void;
 }
 
 const CommentCard = ({
@@ -14,7 +14,7 @@ const CommentCard = ({
     return (
       <p
         className="CommentCard withNavigation"
-        onClick={() => navigateSingleCommentPage(comment.id)}
+        onClick={() => navigateSingleCommentPage(comment)}
       >
         {comment.name}
       </p>
@@ -23,7 +23,6 @@ const CommentCard = ({
 
   return (
     <div className="CommentCard">
-
       <h2>{comment.name}</h2>
       <h3>{comment.email}</h3>
 

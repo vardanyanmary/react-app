@@ -1,7 +1,8 @@
 import { Link, redirect, useParams } from "react-router-dom";
-import { useComment } from "../../Components/hooks/CommentHooks/useComment";
 import CommentCard from "../../Components/CommentCard/CommentCard";
-import './CommentSinglePage.scss'
+import "./CommentSinglePage.scss";
+import { useComments } from "../../Components/hooks/useComments";
+import { useEffect } from "react";
 
 interface CommentSinglePageProps {
   id: string; //string , because from link
@@ -9,28 +10,31 @@ interface CommentSinglePageProps {
 
 const CommentSinglePage = () => {
   const { id } = useParams<Partial<CommentSinglePageProps>>();
-  const { comment } = useComment(Number(id));
+  const { selectedData, getComment, isLoading } = useComments();
 
   if (isNaN(Number(id))) {
     redirect("comments");
   }
 
-//   if (comment === undefined) {
-//     return <p>Loading...</p>;
-//   }
+  useEffect(() => {
+    if (!selectedData) {
+      getComment(Number(id));
+    }
+  }, [getComment, id, selectedData]);
 
-  return(
+  return (
     <div className="CommentSinglePage">
-        {comment?(
-            <>
-                <CommentCard comment={comment}/>
-                <Link to={`/comments`}> Back </Link>
-            </>
-        ):(
-            <p> Comment not found</p>
-        )}
+      {!isLoading && selectedData
+      ? (
+        <>
+          <CommentCard comment={selectedData} />
+          <Link to={`/comments`}> Back </Link>
+        </>
+      ) : (
+        <p> Loading ... </p>
+      )}
     </div>
-  )
+  );
 };
 
 export default CommentSinglePage;

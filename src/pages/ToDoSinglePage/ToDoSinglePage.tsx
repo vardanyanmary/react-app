@@ -1,7 +1,8 @@
 import { Link, redirect, useParams } from "react-router-dom";
-import { useToDo } from "../../Components/hooks/ToDoHooks/useToDo";
 import "./ToDoSinglePage.scss";
 import ToDoCard from "../../Components/ToDoCard/ToDoCard";
+import { useToDos } from "../../Components/hooks/useToDos";
+import { useEffect } from "react";
 
 interface ToDoSinglePageProps {
   id: string;
@@ -9,21 +10,28 @@ interface ToDoSinglePageProps {
 
 const ToDoSinglePage = () => {
   const { id } = useParams<Partial<ToDoSinglePageProps>>();
-  const { todo } = useToDo(Number(id));
+  const { selectedData, getToDo , isLoading } = useToDos();
 
   if (isNaN(Number(id))) {
     redirect('todos');
   }
 
+  useEffect(() => {
+    if (!selectedData) {
+      getToDo(Number(id));
+    }
+  }, [getToDo, id, selectedData]);
+
   return (
     <div className="ToDoSinglePage">
-      {todo ? (
+      {!isLoading && selectedData
+      ? (
         <>
-          <ToDoCard todo = {todo}/>
+          <ToDoCard todo = {selectedData}/>
           <Link to={`/todos`}> Back </Link>
         </>
       ) : (
-        <p> Todo not found</p>
+        <p> Loading ... </p>
       )}
     </div>
   );

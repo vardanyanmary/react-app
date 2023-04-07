@@ -1,23 +1,22 @@
-import { usePosts } from "../../Components/hooks/PostHooks/usePosts";
+import { useEffect } from "react";
+import { usePosts } from "../../Components/hooks/usePosts";
 import PostCard from "../../Components/PostCard/PostCard";
 import "./PostsPage.scss";
 
 const Posts = () => {
-  const { posts, navigateSinglePostPage, isLoading, error } = usePosts()
+  const { posts, navigateSinglePostPage, isLoading, error , getAllPosts} = usePosts();
+
+  useEffect(() => {
+    if (!posts.length) {
+        getAllPosts()
+    }
+}, [getAllPosts, posts])
 
   if (isLoading) {
-      return (
-          <div className="PostsPage">
-              loading...
-          </div>
-      )
+    return <div className="PostsPage">loading...</div>;
   }
   if (error) {
-      return (
-          <div className="PostsPage">
-              {error}
-          </div>
-      )
+    return <div className="PostsPage">{error}</div>;
   }
 
   {
@@ -31,13 +30,16 @@ const Posts = () => {
     <div className="PostsList">
       <h2> Posts List </h2>
       <div className="Posts">
-        {posts?.map((post) =>
-                <PostCard post={post} key={post.id} navigateSinglePostPage={navigateSinglePostPage} />
-            )}
+        {posts?.map((post) => (
+          <PostCard
+            post={post}
+            key={post.id}
+            navigateSinglePostPage={navigateSinglePostPage}
+          />
+        ))}
       </div>
     </div>
   );
-
 };
 
 export default Posts;

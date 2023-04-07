@@ -2,26 +2,15 @@ import { api } from "../../api";
 import { Post } from "./types";
 
 class PostService {
-
   async getAllPosts() {
-    try {
-      const res = await api.get<Post[]>("posts")
-      return res.data
-    } catch (error) {
-      console.log(error)
-    }
+    const res = await api.get<Post[]>("posts");
+    return res.data;
   }
 
-  async getPostById( id: number ) {
-    try {
-      const res = await api.get<Post>(`posts/${id}`)
-      // console.log(res.data);
-      return res.data
-    }catch (error) {
-      console.log(error)
-    }
+  async getPostById(id: number) {
+    const res = await api.get<Post>(`posts/${id}`);
+    return res.data;
   }
-
 }
 
 const postsService = new PostService();

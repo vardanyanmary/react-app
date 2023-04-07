@@ -1,9 +1,16 @@
-import { useToDos } from "../../Components/hooks/ToDoHooks/useToDos";
+import { useEffect } from "react";
+import { useToDos } from "../../Components/hooks/useToDos";
 import ToDoCard from "../../Components/ToDoCard/ToDoCard";
 import "./ToDos.scss";
 
 const ToDos = () => {
-  const { todos, navigateSingleToDoPage, isLoading, error } = useToDos();
+  const { todos, navigateSingleToDoPage, isLoading, error, getAllToDos } = useToDos();
+
+  useEffect(() => {
+    if (!todos.length) {
+        getAllToDos()
+    }
+}, [getAllToDos, todos])
 
   if (isLoading) {
     return <div className="ToDosPage">Loading...</div>;

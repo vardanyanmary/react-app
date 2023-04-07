@@ -1,17 +1,20 @@
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import commentsService from "../../../api/Services/CommentsService/CommentsService";
 import { useDispatch, useSelector } from "react-redux";
+import commentsService from "../../api/Services/CommentsService/CommentsService";
 import {
   getCommentsData,
   getCommentsError,
   getCommentsLoading,
-} from "../../../store/features/comments/selectors/comments";
+  getSelectedComment,
+} from "../../store/features/comments/selectors/comments";
 import {
   initCommentsAction,
   setGetAllCommentsErrorAction,
   setLoading,
-} from "../../../store/features/comments/actions/commentsActions";
+} from "../../store/features/comments/actions/commentsActions";
+import { Comment } from "../../api/Services/CommentsService/type";
+import { selectedCommentAction } from "../../store/features/comments/actions/commentsActions";
 
 export function useComments() {
   const navigate = useNavigate();
@@ -20,6 +23,7 @@ export function useComments() {
   const data = useSelector(getCommentsData);
   const isLoading = useSelector(getCommentsLoading);
   const error = useSelector(getCommentsError);
+  const selectedData = useSelector(getSelectedComment);
 
   const getAllComments = useCallback(async () => {
     dispatch(setLoading(true));
@@ -35,23 +39,35 @@ export function useComments() {
     }
   }, [dispatch]);
 
+  const selectComment = useCallback(
+    (comment: Comment) => {
+      dispatch(selectedCommentAction(comment));
+    },
+    [dispatch]
+  );
+
   const navigateSingleCommentPage = useCallback(
-    (commentId: number) => {
-      navigate(`${commentId}`);
+    (comment: Comment) => {
+      navigate(`${comment.id}`);
+      selectComment(comment);
     },
     [navigate]
   );
 
-  useEffect(() => {
-    if (!data.length) {
-      getAllComments();
-    }
-  }, [getAllComments, data]);
+  const getComment = useCallback(async (commentId: number) => {
+    try {
+      const comment = await commentsService.getCommentById(commentId);
+      selectComment(comment);
+    } catch (error) {}
+  }, []);
 
   return {
     comments: data,
     navigateSingleCommentPage,
     isLoading,
     error,
+    getAllComments,
+    selectedData,
+    getComment,
   };
 }

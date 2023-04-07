@@ -11,6 +11,11 @@ export const initCommentsAction = (payload: Comment[] | undefined) => ({
     payload
 })
 
+export const selectedCommentAction = (payload?: Comment) => ({
+    type: CommentsActionTypes.SELECTED_COMMENT,
+    payload
+})
+
 export const setGetAllCommentsErrorAction = (payload?: string) => ({
     type: CommentsActionTypes.SET_ERROR,
     payload

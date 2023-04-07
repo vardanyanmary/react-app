@@ -3,7 +3,7 @@ import "./ToDoCard.scss";
 
 interface ToDoCardProps {
   todo: ToDo;
-  navigateSingleToDoPage?: (todoId: number) => void;
+  navigateSingleToDoPage?: (todo: ToDo) => void;
 }
 
 const ToDoCard = ({ todo, navigateSingleToDoPage }: ToDoCardProps) => {
@@ -12,7 +12,7 @@ const ToDoCard = ({ todo, navigateSingleToDoPage }: ToDoCardProps) => {
         return (
           <p
             className="ToDoCard withNavigation"
-            onClick={() => navigateSingleToDoPage(todo.id)}
+            onClick={() => navigateSingleToDoPage(todo)}
           >
             {todo.title}
           </p>

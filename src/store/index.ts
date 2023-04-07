@@ -1,24 +1,30 @@
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import { settingsReducer } from "./features/settings/reducers/settingsReducer";
 import { counterReducer } from "./features/counter/reducers/counterReducer";
 import { postsReducer } from "./features/posts/reducers/postsReducer";
-import { postReducer } from "./features/posts/reducers/postReducer";
 import { todosReducer } from "./features/todos/reducers/todosReducer";
-import { todoReducer } from "./features/todos/reducers/todoReducer";
 import { commentsReducer } from "./features/comments/reducers/commentsReducer";
-import { commentReducer } from "./features/comments/reducers/commentReducer";
+
+import thunk from "redux-thunk";
+// @ts-ignore
+import logger from "redux-logger";
 
 const reducers = combineReducers({
   settings: settingsReducer,
   counter: counterReducer,
   posts: postsReducer,
-  post: postReducer,
   todos: todosReducer,
-  todo: todoReducer,
   comments: commentsReducer,
-  comment: commentReducer,
 });
 
-export const store = createStore(reducers);
+const middlewareEnhancer = applyMiddleware(thunk,logger)
+
+const composeWithDevTools =
+    //@ts-ignore
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const composedEnhancers = composeWithDevTools(middlewareEnhancer)
+
+export const store = createStore(reducers, composedEnhancers)
 
 export type RootState = ReturnType<typeof store.getState>;
