@@ -10,7 +10,7 @@ interface CommentSinglePageProps {
 
 const CommentSinglePage = () => {
   const { id } = useParams<Partial<CommentSinglePageProps>>();
-  const { selectedData, getComment, isLoading } = useComments();
+  const { selectedData, getComment, isLoading, error } = useComments();
 
   if (isNaN(Number(id))) {
     redirect("comments");
@@ -22,10 +22,13 @@ const CommentSinglePage = () => {
     }
   }, [getComment, id, selectedData]);
 
+  if (error) {
+    return <div className="CommentSinglePage">{error}</div>;
+  }
+  
   return (
     <div className="CommentSinglePage">
-      {!isLoading && selectedData
-      ? (
+      {!isLoading && selectedData ? (
         <>
           <CommentCard comment={selectedData} />
           <Link to={`/comments`}> Back </Link>

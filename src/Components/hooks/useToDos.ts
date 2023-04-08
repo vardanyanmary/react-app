@@ -57,11 +57,13 @@ export function useToDos() {
   const getToDo = useCallback(
     async (todoId: number) => {
       dispatch(setLoading(true));
+      dispatch(setGetAllToDosErrorAction(undefined))
       try {
         const todo = await toDoService.getToDoById(todoId);
         selectToDo(todo);
       } catch (error) {
         console.error(error);
+        dispatch(setGetAllToDosErrorAction('Not Found'))
       } finally {
         dispatch(setLoading(false));
       }

@@ -3,6 +3,7 @@ import "./ToDoSinglePage.scss";
 import ToDoCard from "../../Components/ToDoCard/ToDoCard";
 import { useToDos } from "../../Components/hooks/useToDos";
 import { useEffect } from "react";
+import { error } from "console";
 
 interface ToDoSinglePageProps {
   id: string;
@@ -10,10 +11,10 @@ interface ToDoSinglePageProps {
 
 const ToDoSinglePage = () => {
   const { id } = useParams<Partial<ToDoSinglePageProps>>();
-  const { selectedData, getToDo , isLoading } = useToDos();
+  const { selectedData, getToDo, isLoading, error } = useToDos();
 
   if (isNaN(Number(id))) {
-    redirect('todos');
+    redirect("todos");
   }
 
   useEffect(() => {
@@ -22,12 +23,14 @@ const ToDoSinglePage = () => {
     }
   }, [getToDo, id, selectedData]);
 
+  if (error) {
+    return <div className="ToDosPage">{error}</div>;
+  }
   return (
     <div className="ToDoSinglePage">
-      {!isLoading && selectedData
-      ? (
+      {!isLoading && selectedData ? (
         <>
-          <ToDoCard todo = {selectedData}/>
+          <ToDoCard todo={selectedData} />
           <Link to={`/todos`}> Back </Link>
         </>
       ) : (
@@ -35,7 +38,6 @@ const ToDoSinglePage = () => {
       )}
     </div>
   );
-  
 };
 
 export default ToDoSinglePage;

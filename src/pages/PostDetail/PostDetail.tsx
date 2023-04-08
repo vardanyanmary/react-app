@@ -10,7 +10,7 @@ interface PostPageParams {
 
 const PostDetail = () => {
   const { id } = useParams<Partial<PostPageParams>>();
-  const { selectedData, getPost, isLoading } = usePosts();
+  const { selectedData, getPost, isLoading , error } = usePosts();
 
   if (isNaN(Number(id))) {
     redirect("posts");
@@ -21,6 +21,10 @@ const PostDetail = () => {
       getPost(Number(id));
     }
   }, [getPost, id, selectedData]);
+
+  if (error) {
+    return <div className="PostDetail">{error}</div>;
+  }
 
   return (
     <div className="PostDetail">

@@ -57,11 +57,13 @@ export function usePosts() {
   const getPost = useCallback(
     async (postId: number) => {
       dispatch(setLoading(true));
+      dispatch(setGetAllPostsErrorAction(undefined));
       try {
         const post = await postsService.getPostById(postId);
         selectPost(post);
       } catch (error) {
         console.error(error);
+        dispatch(setGetAllPostsErrorAction('Not Found'));
       } finally {
         dispatch(setLoading(false));
       }

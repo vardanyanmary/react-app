@@ -55,10 +55,17 @@ export function useComments() {
   );
 
   const getComment = useCallback(async (commentId: number) => {
+    dispatch(setLoading(true));
+    dispatch(setGetAllCommentsErrorAction(undefined));
     try {
       const comment = await commentsService.getCommentById(commentId);
       selectComment(comment);
-    } catch (error) {}
+    } catch (error) {
+      console.warn(error);
+        dispatch(setGetAllCommentsErrorAction("Not Found"));
+    } finally {
+      dispatch(setLoading(false));
+    }
   }, []);
 
   return {
