@@ -2,19 +2,9 @@ import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import commentsService from "../../api/Services/CommentsService/CommentsService";
-import {
-  getCommentsData,
-  getCommentsError,
-  getCommentsLoading,
-  getSelectedComment,
-} from "../../store/features/comments/selectors/comments";
-import {
-  initCommentsAction,
-  setGetAllCommentsErrorAction,
-  setLoading,
-} from "../../store/features/comments/actions/commentsActions";
+import { getCommentsData, getCommentsError, getCommentsLoading, getSelectedComment } from "../../store/features/comments/selectors/comments";
 import { Comment } from "../../api/Services/CommentsService/type";
-import { selectedCommentAction } from "../../store/features/comments/actions/commentsActions";
+import { commentAction } from "../../store/features/comments/commentSlice/commentSlice";
 
 export function useComments() {
   const navigate = useNavigate();
@@ -26,22 +16,22 @@ export function useComments() {
   const selectedData = useSelector(getSelectedComment);
 
   const getAllComments = useCallback(async () => {
-    dispatch(setLoading(true));
-    dispatch(setGetAllCommentsErrorAction(undefined));
+    dispatch(commentAction.setLoading(true));
+    dispatch(commentAction.setError(undefined));
     try {
       const comments = await commentsService.getAllComments();
-      dispatch(initCommentsAction(comments));
+      dispatch(commentAction.initComments(comments));
     } catch (error) {
       console.log(error);
-      dispatch(setGetAllCommentsErrorAction("error massage"));
+      dispatch(commentAction.setError("error massage"));
     } finally {
-      dispatch(setLoading(false));
+      dispatch(commentAction.setLoading(false));
     }
   }, [dispatch]);
 
   const selectComment = useCallback(
     (comment: Comment) => {
-      dispatch(selectedCommentAction(comment));
+      dispatch(commentAction.selectedComment(comment));
     },
     [dispatch]
   );
@@ -55,16 +45,16 @@ export function useComments() {
   );
 
   const getComment = useCallback(async (commentId: number) => {
-    dispatch(setLoading(true));
-    dispatch(setGetAllCommentsErrorAction(undefined));
+    dispatch(commentAction.setLoading(true));
+    dispatch(commentAction.setError(undefined));
     try {
       const comment = await commentsService.getCommentById(commentId);
       selectComment(comment);
     } catch (error) {
       console.warn(error);
-        dispatch(setGetAllCommentsErrorAction("Not Found"));
+      dispatch(commentAction.setError("Not Found"));
     } finally {
-      dispatch(setLoading(false));
+      dispatch(commentAction.setLoading(false));
     }
   }, []);
 

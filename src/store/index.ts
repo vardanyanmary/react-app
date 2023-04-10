@@ -1,10 +1,12 @@
 import logger from "redux-logger";
 import { configureStore } from "@reduxjs/toolkit";
 import { postReducer } from "./features/posts";
+import { commentReducer } from "./features/comments/commentSlice/commentSlice";
 
 export const store = configureStore({
   reducer: {
-    posts : postReducer
+    posts : postReducer,
+    comments : commentReducer,
 },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
 
