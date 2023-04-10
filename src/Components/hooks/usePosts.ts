@@ -8,13 +8,8 @@ import {
   getPostsLoading,
   getSelectedPost,
 } from "../../store/features/posts/selectors/posts";
-import {
-  initPostsAction,
-  selectedPostAction,
-  setGetAllPostsErrorAction,
-  setLoading,
-} from "../../store/features/posts/actions/postsActions";
 import { Post } from "../../api/Services/PostsService/types";
+import { postActions } from "../../store/features/posts";
 
 export function usePosts() {
   const navigate = useNavigate();
@@ -26,22 +21,22 @@ export function usePosts() {
   const selectedData = useSelector(getSelectedPost);
 
   const getAllPosts = useCallback(async () => {
-    dispatch(setLoading(true));
-    dispatch(setGetAllPostsErrorAction(undefined));
+    dispatch(postActions.setLoading(true));
+    dispatch(postActions.setError(undefined));
     try {
       const posts = await postsService.getAllPosts();
-      dispatch(initPostsAction(posts));
+      dispatch(postActions.initPosts(posts));
     } catch (error) {
       console.warn(error);
-      dispatch(setGetAllPostsErrorAction("error message"));
+      dispatch(postActions.setError("error message"));
     } finally {
-      dispatch(setLoading(false));
+      dispatch(postActions.setLoading(false));
     }
   }, [dispatch]);
 
   const selectPost = useCallback(
     (post: Post) => {
-      dispatch(selectedPostAction(post));
+      dispatch(postActions.selectPosts(post));
     },
     [dispatch]
   );
@@ -56,16 +51,17 @@ export function usePosts() {
 
   const getPost = useCallback(
     async (postId: number) => {
-      dispatch(setLoading(true));
-      dispatch(setGetAllPostsErrorAction(undefined));
+      dispatch(postActions.setLoading(true));
+      dispatch(postActions.setError(undefined));
+    
       try {
         const post = await postsService.getPostById(postId);
         selectPost(post);
       } catch (error) {
         console.error(error);
-        dispatch(setGetAllPostsErrorAction('Not Found'));
+        dispatch(postActions.setError('Not Found'));
       } finally {
-        dispatch(setLoading(false));
+        dispatch(postActions.setLoading(false));
       }
     },
     [dispatch, selectPost]

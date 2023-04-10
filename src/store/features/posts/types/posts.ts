@@ -1,7 +1,8 @@
-export enum PostsActionTypes {
-    SET_LOADING = 'SET_LOADING',
-    INIT_POSTS = 'INIT_POSTS',
-    SELECTED_POST = 'SELECTED_POST',
-    SET_ERROR = 'SET_ERROR'
-} 
+import { Post } from "../../../../api/Services/PostsService/types";
 
+export interface PostsStateSchema {
+  data: Post[];
+  selectedData?: Post;
+  isLoading: boolean;
+  error?: string;
+}
