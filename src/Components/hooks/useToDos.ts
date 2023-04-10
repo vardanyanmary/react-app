@@ -1,20 +1,10 @@
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import toDoService from "../../api/Services/ToDosService/ToDosService";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getSelectedToDo,
-  getToDosData,
-  getToDosError,
-  getToDosLoading,
-} from "../../store/features/todos/selectors/todos";
-import {
-  initToDosAction,
-  selectedToDoAction,
-  setGetAllToDosErrorAction,
-  setLoading,
-} from "../../store/features/todos/actions/todosActions";
+import { getSelectedToDo, getToDosData, getToDosError, getToDosLoading } from "../../store/features/todos/selectors/todos";
 import { ToDo } from "../../api/Services/ToDosService/types";
+import { todoAction } from "../../store/features/todos/todoSlice/todoSlice";
 
 export function useToDos() {
   const navigate = useNavigate();
@@ -26,22 +16,22 @@ export function useToDos() {
   const selectedData = useSelector(getSelectedToDo);
 
   const getAllToDos = useCallback(async () => {
-    dispatch(setLoading(true));
-    dispatch(setGetAllToDosErrorAction(undefined));
+    dispatch(todoAction.setLoading(true));
+    dispatch(todoAction.setError(undefined));
     try {
       const todos = await toDoService.getAllToDos();
-      dispatch(initToDosAction(todos));
+      dispatch(todoAction.initTodos(todos));
     } catch (error) {
       console.warn(error);
-      dispatch(setGetAllToDosErrorAction("error massage"));
+      dispatch(todoAction.setError("error massage"));
     } finally {
-      dispatch(setLoading(false));
+      dispatch(todoAction.setLoading(false));
     }
   }, [dispatch]);
 
   const selectToDo = useCallback(
     (todo: ToDo) => {
-      dispatch(selectedToDoAction(todo));
+      dispatch(todoAction.selectedComment(todo));
     },
     [dispatch]
   );
@@ -56,16 +46,16 @@ export function useToDos() {
 
   const getToDo = useCallback(
     async (todoId: number) => {
-      dispatch(setLoading(true));
-      dispatch(setGetAllToDosErrorAction(undefined))
+      dispatch(todoAction.setLoading(true));
+      dispatch(todoAction.setError(undefined));
       try {
         const todo = await toDoService.getToDoById(todoId);
         selectToDo(todo);
       } catch (error) {
         console.error(error);
-        dispatch(setGetAllToDosErrorAction('Not Found'))
+        dispatch(todoAction.setError("Not Found"));
       } finally {
-        dispatch(setLoading(false));
+        dispatch(todoAction.setLoading(false));
       }
     },
     [dispatch, selectToDo]
