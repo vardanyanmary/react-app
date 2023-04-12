@@ -4,5 +4,5 @@ export interface CommentsStateSchema {
     data: Comment[];
     isLoading: boolean;
     error?: string;
-    selectedData?: Comment;
+    selectComment?: Comment;
   }

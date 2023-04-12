@@ -31,7 +31,7 @@ export function useComments() {
 
   const selectComment = useCallback(
     (comment: Comment) => {
-      dispatch(commentAction.selectedComment(comment));
+      dispatch(commentAction.selectComment(comment));
     },
     [dispatch]
   );

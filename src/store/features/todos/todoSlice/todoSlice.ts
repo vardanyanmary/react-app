@@ -20,8 +20,8 @@ const todoSlice = createSlice({
     setError: (state, action: PayloadAction<string | undefined>) => {
       state.error = action.payload;
     },
-    selectedComment: (state, action: PayloadAction<ToDo>) => {
-        state.selectedData = action.payload
+    selectToDo: (state, action: PayloadAction<ToDo>) => {
+        state.selectToDo = action.payload
     },
   },
 });

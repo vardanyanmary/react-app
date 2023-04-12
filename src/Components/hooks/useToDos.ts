@@ -31,7 +31,7 @@ export function useToDos() {
 
   const selectToDo = useCallback(
     (todo: ToDo) => {
-      dispatch(todoAction.selectedComment(todo));
+      dispatch(todoAction.selectToDo(todo));
     },
     [dispatch]
   );

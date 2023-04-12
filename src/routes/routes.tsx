@@ -8,6 +8,8 @@ import { HomePage } from "../pages/HomePage/HomePage";
 import CommentsPage from "../pages/CommentsPage/CommentsPage";
 import CommentSinglePage from "../pages/CommentSinglePage/CommentSinglePage";
 import { CounterPage } from "../pages/Counter/CounterPage";
+import AlbumSinglePage from "../pages/AlbumSinglePage/AlbumSinglePage";
+import AlbumsPage from "../pages/AlbumsPage/AlbumsPage";
 
 export const privateRoutes = [
   {
@@ -37,6 +39,14 @@ export const privateRoutes = [
   {
     path: "/comments/:id",
     element: <CommentSinglePage />,
+  },
+  {
+    path: "/albums",
+    element: <AlbumsPage />,
+  },
+  {
+    path: "/albums/:id",
+    element: <AlbumSinglePage />,
   },
   {
     path: "/counter",

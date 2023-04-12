@@ -4,5 +4,5 @@ export interface ToDosStateSchema {
   data: ToDo[];
   isLoading: boolean;
   error?: string;
-  selectedData?: ToDo;
+  selectToDo ?: ToDo;
 }
