@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import albumsService from "../../api/Services/AlbumsService/AlbumsService";
 import { Album } from "../../api/Services/AlbumsService/types";
@@ -10,28 +10,31 @@ import {
   getAlbumsLoading,
   getSelectedAlbum,
 } from "../../store/features/albums/selectors/albums";
+import { fetchAllAlbums } from "../../store/features/albums/model/fetchAllAlbums";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 
 export function useAlbums() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const data = useSelector(getAlbumsData);
   const isLoading = useSelector(getAlbumsLoading);
   const error = useSelector(getAlbumsError);
   const selectedData = useSelector(getSelectedAlbum);
 
-  const getAllAlbums = useCallback(async () => {
-    dispatch(albumAction.setLoading(true));
-    dispatch(albumAction.setError(undefined));
-    try {
-      const albums = await albumsService.getAllAlbums();
-      dispatch(albumAction.initAlbums(albums));
-    } catch (error) {
-      console.log(error);
-      dispatch(albumAction.setError("error massage"));
-    } finally {
-      dispatch(albumAction.setLoading(false));
-    }
+  const getAllAlbums = useCallback(() => {
+    dispatch(fetchAllAlbums())
+    // dispatch(albumAction.setLoading(true));
+    // dispatch(albumAction.setError(undefined));
+    // try {
+    //   const albums = await albumsService.getAllAlbums();
+    //   dispatch(albumAction.initAlbums(albums));
+    // } catch (error) {
+    //   console.log(error);
+    //   dispatch(albumAction.setError("error massage"));
+    // } finally {
+    //   dispatch(albumAction.setLoading(false));
+    // }
   }, []);
 
   const selectAlbum = useCallback(
@@ -51,13 +54,11 @@ export function useAlbums() {
 
   const getAlbum = useCallback(async (albumId: number) => {
     dispatch(albumAction.setLoading(true));
-    dispatch(albumAction.setError(undefined));
     try {
       const album = await albumsService.getAlbumById(albumId);
       selectAlbum(album);
     } catch (error) {
       console.warn(error);
-      dispatch(albumAction.setError("error massage"));
     } finally {
       dispatch(albumAction.setLoading(false));
     }
