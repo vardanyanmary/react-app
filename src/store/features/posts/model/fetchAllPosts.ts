@@ -18,6 +18,7 @@ export const fetchAllPosts = createAsyncThunk<Post[], void, { state: RootState, 
 
             if (error.code === ErrorMessage.ERR_BAD_REQUEST) {
                 return thunkApi.rejectWithValue(ErrorMessage.ERR_BAD_REQUEST)
+                // return error.code
             }
             return []
                  // return thunkApi.rejectWithValue(error)
