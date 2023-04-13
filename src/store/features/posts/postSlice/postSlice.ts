@@ -28,25 +28,27 @@ const postSlice = createSlice({
     },
   },
 
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
-        .addCase(fetchAllPosts.pending, (state) => {
-            state.isLoading = true
-        })
-        .addCase(fetchAllPosts.fulfilled, (state, action) => {
-            state.data = action.payload
-            state.isLoading = false
-        })
-        .addCase(fetchAllPosts.rejected, (state,action) => {
-            // if(action.error.code) {
-            //     state.error = action.error.code;
-            // }else {
-            //     state.error = ErrorMessage.NOT_FOUND
-            // }
-            state.error = action.payload as ErrorMessage
-            state.isLoading = false
-        })
-},
+      // addCase<ActionCreator, function (te inch petqa ani et yntacqum )> ActionCreator - stex darnuma fetchAllPosts
+
+      .addCase(fetchAllPosts.pending, (state) => {
+        // Loading
+        state.isLoading = true;
+      }) // pendingi jamanak mez petq chi action unenanq , mez staten ela heriq
+
+      .addCase(fetchAllPosts.fulfilled, (state, action) => {
+        // ashxatela
+        state.data = action.payload;
+        state.isLoading = false;
+      })
+
+      .addCase(fetchAllPosts.rejected, (state, action) => {
+        // rejecta exel
+        state.error = action.payload as ErrorMessage;
+        state.isLoading = false;
+      });
+  },
 });
 
 export const { reducer: postReducer, actions: postActions } = postSlice;

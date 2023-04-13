@@ -10,8 +10,8 @@ export const fetchAllPosts = createAsyncThunk<Post[], void, { state: RootState, 
         try {
             const response = await api.get<Post[]>('posts')
             // if (response.status < 200 || response.status >= 300) {
-            //     return thunkApi.rejectWithValue(response.data)
-            // }
+            //     return thunkApi.rejectWithValue(response.data) // hashvi vor chi ashxatel
+            // } // mnacac bolor depqerum responsi datan returna anum 
             return response.data
         } catch (error: any) {
             console.log(error);

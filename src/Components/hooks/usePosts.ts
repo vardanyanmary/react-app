@@ -15,7 +15,7 @@ import { useAppDispatch } from "../../hooks/useAppDispatch";
 
 export function usePosts() {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch(); // vor imana vor kara thunk el stana 
 
   const data = useSelector(getPostsData);
   const isLoading = useSelector(getPostsLoading);
