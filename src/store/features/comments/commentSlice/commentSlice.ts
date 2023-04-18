@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { CommentsStateSchema } from "../types/comments";
 import { Comment } from "../../../../api/Services/CommentsService/type";
 import { fetchAllComments } from "../model/fetchAllComments";
-import { ErrorMessage } from "../../../../constants/errorMassages";
+import { ErrorMessage } from "../../../../shared/constants/errorMassages";
 import { fetchCommentById } from "../model/fetchCommentById";
 
 const initialState: CommentsStateSchema = {

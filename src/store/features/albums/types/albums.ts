@@ -1,5 +1,5 @@
 import { Album } from "../../../../api/Services/AlbumsService/types";
-import { ErrorMessage } from "../../../../constants/errorMassages";
+import { ErrorMessage } from "../../../../shared/constants/errorMassages";
 
 export interface AlbumsStateSchema {
     data: Album[];

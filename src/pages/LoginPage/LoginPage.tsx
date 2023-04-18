@@ -1,6 +1,6 @@
-import Button from "../../Components/UI/Button/Button";
-import Input from "../../Components/UI/Input/Input";
 import { useAuth } from "../../Providers/AuthProvider";
+import Button from "../../shared/UI/Button/Button";
+import Input from "../../shared/UI/Input/Input";
 import './LoginPage.scss'
 
 const LoginPage = () => {

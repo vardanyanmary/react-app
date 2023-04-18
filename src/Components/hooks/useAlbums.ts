@@ -11,7 +11,7 @@ import {
   getSelectedAlbum,
 } from "../../store/features/albums/selectors/albums";
 import { fetchAllAlbums } from "../../store/features/albums/model/fetchAllAlbums";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppDispatch } from "../../shared/hooks/useAppDispatch";
 import { fetchAlbumById } from "../../store/features/albums/model/fetchAlbumById";
 
 export function useAlbums() {

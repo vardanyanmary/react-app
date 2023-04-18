@@ -1,22 +1,18 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Post } from "../../../../api/Services/PostsService/types";
 import postsService from "../../../../api/Services/PostsService/PostsService";
-import { ErrorMessage } from "../../../../constants/errorMassages";
-import { RootState } from "../../..";
+import { AsyncThunkConfig } from "../../../../shared/types/asyncThunkConfig";
+import { errorHandler } from "../../../../shared/utils/errorHandler";
 
-export const fetchPostById = createAsyncThunk<Post | null, number, { state: RootState, rejectValue: ErrorMessage }>(
+export const fetchPostById = createAsyncThunk<Post | null, number, AsyncThunkConfig>(
     'postSlice/fetchPostById',
     async (postId, thunkApi) => {
         try {
+            // thunkApi.getState() vor stex get aneluc haskana vor mer store-y konkret et typen uni 
             const response = await postsService.getPostById(postId)
             return response.data
         } catch (error: any) {
-            console.log(error);
-
-            if (error.code === ErrorMessage.ERR_BAD_REQUEST) {
-                return thunkApi.rejectWithValue(ErrorMessage.ERR_BAD_REQUEST)
-            }
-            return null 
+            return errorHandler(error,thunkApi)
         }
     }
 )

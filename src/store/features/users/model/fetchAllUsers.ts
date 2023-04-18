@@ -1,11 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { User } from "../../../../api/Services/UsersService/types";
-import { api } from "../../../../api/api";
-import { ErrorMessage } from "../../../../constants/errorMassages";
-import { RootState } from "../../..";
+import { ErrorMessage } from "../../../../shared/constants/errorMassages";
 import userService from "../../../../api/Services/UsersService/UsersService";
+import { AsyncThunkConfig } from "../../../../shared/types/asyncThunkConfig";
 
-export const fetchAllUsers = createAsyncThunk<User[], void, { state: RootState, rejectValue: ErrorMessage }>(
+export const fetchAllUsers = createAsyncThunk<User[], void, AsyncThunkConfig >(
     'userSlice/fetchAllUsers',
     async (_, thunkApi) => {
         try {

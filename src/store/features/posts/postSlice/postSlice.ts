@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Post } from "../../../../api/Services/PostsService/types";
 import { PostsStateSchema } from "../types/posts";
 import { fetchAllPosts } from "../model/fetchAllPosts";
-import { ErrorMessage } from "../../../../constants/errorMassages";
+import { ErrorMessage } from "../../../../shared/constants/errorMassages";
 import { fetchPostById } from "../model/fetchPostById";
 
 const initialState: PostsStateSchema = {

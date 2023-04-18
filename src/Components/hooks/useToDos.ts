@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { getSelectedToDo, getToDosData, getToDosError, getToDosLoading } from "../../store/features/todos/selectors/todos";
 import { ToDo } from "../../api/Services/ToDosService/types";
 import { todoAction } from "../../store/features/todos/todoSlice/todoSlice";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppDispatch } from "../../shared/hooks/useAppDispatch";
 import { fetchAllToDos } from "../../store/features/todos/model/fetchAllToDos";
 import { fetchToDoById } from "../../store/features/todos/model/fetchToDoById";
 

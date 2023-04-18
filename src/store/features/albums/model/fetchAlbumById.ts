@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { RootState } from "../../..";
-import { ErrorMessage } from "../../../../constants/errorMassages";
+import { ErrorMessage } from "../../../../shared/constants/errorMassages";
 import { Album } from "../../../../api/Services/AlbumsService/types";
 import albumsService from "../../../../api/Services/AlbumsService/AlbumsService";
+import { AsyncThunkConfig } from "../../../../shared/types/asyncThunkConfig";
 
-export const fetchAlbumById = createAsyncThunk< Album | null, number, { state: RootState; rejectValue: ErrorMessage }>( 
+export const fetchAlbumById = createAsyncThunk< Album | null, number, AsyncThunkConfig>( 
     "albumSlice/fetchAlbumById", 
         async (albumId, thunkApi) => {
         try {

@@ -11,7 +11,7 @@ import {
 import { Post } from "../../api/Services/PostsService/types";
 import { postActions } from "../../store/features/posts";
 import { fetchAllPosts } from "../../store/features/posts/model/fetchAllPosts";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppDispatch } from "../../shared/hooks/useAppDispatch";
 import { fetchPostById } from "../../store/features/posts/model/fetchPostById";
 
 export function usePosts() {

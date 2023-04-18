@@ -1,5 +1,5 @@
 import { ToDo } from "../../../../api/Services/ToDosService/types";
-import { ErrorMessage } from "../../../../constants/errorMassages";
+import { ErrorMessage } from "../../../../shared/constants/errorMassages";
 
 export interface ToDosStateSchema {
   data: ToDo[];

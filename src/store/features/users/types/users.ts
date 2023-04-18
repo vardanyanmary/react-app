@@ -1,5 +1,5 @@
 import { User } from "../../../../api/Services/UsersService/types";
-import { ErrorMessage } from "../../../../constants/errorMassages";
+import { ErrorMessage } from "../../../../shared/constants/errorMassages";
 
 export interface UsersStateSchema {
     data: User[];

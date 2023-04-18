@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppDispatch } from "../../shared/hooks/useAppDispatch";
 import { useNavigate } from "react-router-dom";
 import { fetchAllUsers } from "../../store/features/users/model/fetchAllUsers";
 import { User } from "../../api/Services/UsersService/types";

@@ -1,6 +1,6 @@
 import { useAuth } from "../../Providers/AuthProvider";
-import AppLink from "../UI/AppLink/AppLink";
-import Button from "../UI/Button/Button";
+import AppLink from "../../shared/UI/AppLink/AppLink";
+import Button from "../../shared/UI/Button/Button";
 import "./Navbar.scss";
 
 const Navbar = () => {

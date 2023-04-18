@@ -10,7 +10,7 @@ import {
 } from "../../store/features/comments/selectors/comments";
 import { Comment } from "../../api/Services/CommentsService/type";
 import { commentAction } from "../../store/features/comments/commentSlice/commentSlice";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppDispatch } from "../../shared/hooks/useAppDispatch";
 import { fetchAllComments } from "../../store/features/comments/model/fetchAllComments";
 import { fetchCommentById } from "../../store/features/comments/model/fetchCommentById";
 

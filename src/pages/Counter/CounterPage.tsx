@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import Button from "../../Components/UI/Button/Button";
 import "./CounterPage.scss";
+import Button from "../../shared/UI/Button/Button";
 
 export const CounterPage = () => {
   const state = useSelector((state) => state) as any;

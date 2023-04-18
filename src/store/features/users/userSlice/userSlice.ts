@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { UsersStateSchema } from "../types/users";
-import { ErrorMessage } from "../../../../constants/errorMassages";
+import { ErrorMessage } from "../../../../shared/constants/errorMassages";
 import { User } from "../../../../api/Services/UsersService/types";
 import { fetchAllUsers } from "../model/fetchAllUsers";
 import { fetchUserById } from "../model/fetchUserById";

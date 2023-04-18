@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
-import Button from "../UI/Button/Button";
-import Input from "../UI/Input/Input";
 import "./Content.scss";
+import Input from "../../shared/UI/Input/Input";
+import Button from "../../shared/UI/Button/Button";
 
 export interface ContentProps {
   content: string;

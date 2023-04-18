@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Post } from "../../../../api/Services/PostsService/types";
-import { RootState } from "../../..";
 import { api } from "../../../../api/api";
-import { ErrorMessage } from "../../../../constants/errorMassages";
+import { AsyncThunkConfig } from "../../../../shared/types/asyncThunkConfig";
+import { errorHandler } from "../../../../shared/utils/errorHandler";
 
-export const fetchAllPosts = createAsyncThunk<Post[], void, { state: RootState, rejectValue: ErrorMessage }>(
+export const fetchAllPosts = createAsyncThunk<Post[], void, AsyncThunkConfig >(
     'postSlice/fetchAllPosts',
     async (_, thunkApi) => {
         try {
@@ -14,15 +14,7 @@ export const fetchAllPosts = createAsyncThunk<Post[], void, { state: RootState, 
             // } // mnacac bolor depqerum responsi datan returna anum 
             return response.data
         } catch (error: any) {
-            console.log(error);
-
-            if (error.code === ErrorMessage.ERR_BAD_REQUEST) {
-                return thunkApi.rejectWithValue(ErrorMessage.ERR_BAD_REQUEST)
-                // return error.code
-            }
-            return []
-                 // return thunkApi.rejectWithValue(error)
-
+            return errorHandler(error , thunkApi)
         }
     }
 )

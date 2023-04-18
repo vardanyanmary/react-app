@@ -1,5 +1,5 @@
 import { Post } from "../../../../api/Services/PostsService/types";
-import { ErrorMessage } from "../../../../constants/errorMassages";
+import { ErrorMessage } from "../../../../shared/constants/errorMassages";
 
 export interface PostsStateSchema {
   data: Post[];

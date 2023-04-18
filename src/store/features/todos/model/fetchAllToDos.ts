@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { RootState } from "../../..";
 import { api } from "../../../../api/api";
-import { ErrorMessage } from "../../../../constants/errorMassages";
+import { ErrorMessage } from "../../../../shared/constants/errorMassages";
 import { ToDo } from "../../../../api/Services/ToDosService/types";
+import { AsyncThunkConfig } from "../../../../shared/types/asyncThunkConfig";
 
-export const fetchAllToDos = createAsyncThunk<ToDo[], void, { state: RootState, rejectValue: ErrorMessage }>(
+export const fetchAllToDos = createAsyncThunk<ToDo[], void, AsyncThunkConfig >(
     'todoSlice/fetchAllToDos',
     async (_, thunkApi) => {
         try {

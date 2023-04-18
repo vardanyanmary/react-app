@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ToDosStateSchema } from "../types/todos";
 import { ToDo } from "../../../../api/Services/ToDosService/types";
 import { fetchAllToDos } from "../model/fetchAllToDos";
-import { ErrorMessage } from "../../../../constants/errorMassages";
+import { ErrorMessage } from "../../../../shared/constants/errorMassages";
 import { fetchToDoById } from "../model/fetchToDoById";
 
 const initialState: ToDosStateSchema = {
