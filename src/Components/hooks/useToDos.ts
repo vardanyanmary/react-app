@@ -1,12 +1,12 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import toDoService from "../../api/Services/ToDosService/ToDosService";
 import { useSelector } from "react-redux";
 import { getSelectedToDo, getToDosData, getToDosError, getToDosLoading } from "../../store/features/todos/selectors/todos";
 import { ToDo } from "../../api/Services/ToDosService/types";
 import { todoAction } from "../../store/features/todos/todoSlice/todoSlice";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { fetchAllToDos } from "../../store/features/todos/model/fetchAllToDos";
+import { fetchToDoById } from "../../store/features/todos/model/fetchToDoById";
 
 export function useToDos() {
   const navigate = useNavigate();
@@ -32,34 +32,30 @@ export function useToDos() {
     // }
   }, [dispatch]);
 
-  const selectToDo = useCallback(
-    (todo: ToDo) => {
-      dispatch(todoAction.selectToDo(todo));
-    },
-    [dispatch]
-  );
 
   const navigateSingleToDoPage = useCallback(
     (todo: ToDo) => {
       navigate(`${todo.id}`);
-      selectToDo(todo);
+      // selectToDo(todo);
+      dispatch(todoAction.selectToDo(todo));
     },
     [navigate]
   );
 
   const getToDo = useCallback(
-    async (todoId: number) => {
-      dispatch(todoAction.setLoading(true));
-      try {
-        const todo = await toDoService.getToDoById(todoId);
-        selectToDo(todo);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        dispatch(todoAction.setLoading(false));
-      }
+     (todoId: number) => {
+      dispatch(fetchToDoById(todoId))
+      // dispatch(todoAction.setLoading(true));
+      // try {
+      //   const todo = await toDoService.getToDoById(todoId);
+      //   selectToDo(todo);
+      // } catch (error) {
+      //   console.error(error);
+      // } finally {
+      //   dispatch(todoAction.setLoading(false));
+      // }
     },
-    [dispatch, selectToDo]
+    [dispatch]
   );
 
   return {

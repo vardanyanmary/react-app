@@ -3,6 +3,7 @@ import { ToDosStateSchema } from "../types/todos";
 import { ToDo } from "../../../../api/Services/ToDosService/types";
 import { fetchAllToDos } from "../model/fetchAllToDos";
 import { ErrorMessage } from "../../../../constants/errorMassages";
+import { fetchToDoById } from "../model/fetchToDoById";
 
 const initialState: ToDosStateSchema = {
   data: [],
@@ -36,11 +37,18 @@ const todoSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchAllToDos.rejected, (state, action) => {
-        // if(action.error.code) {
-        //     state.error = action.error.code;
-        // }else {
-        //     state.error = ErrorMessage.NOT_FOUND
-        // }
+        state.error = action.payload as ErrorMessage;
+        state.isLoading = false;
+      });
+    builder
+      .addCase(fetchToDoById.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchToDoById.fulfilled, (state, action) => {
+        state.selectToDo = action.payload as ToDo;
+        state.isLoading = false;
+      })
+      .addCase(fetchToDoById.rejected, (state, action) => {
         state.error = action.payload as ErrorMessage;
         state.isLoading = false;
       });

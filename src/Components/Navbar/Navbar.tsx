@@ -16,6 +16,7 @@ const Navbar = () => {
             <AppLink to="/todos"> ToDos </AppLink>
             <AppLink to="/comments"> Comments </AppLink>
             <AppLink to="/albums"> Albums </AppLink>
+            <AppLink to="/users"> Users </AppLink>
             <AppLink to='/counter'>Counter</AppLink>
           </span>
         </>

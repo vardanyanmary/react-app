@@ -2,11 +2,17 @@ import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import commentsService from "../../api/Services/CommentsService/CommentsService";
-import { getCommentsData, getCommentsError, getCommentsLoading, getSelectedComment } from "../../store/features/comments/selectors/comments";
+import {
+  getCommentsData,
+  getCommentsError,
+  getCommentsLoading,
+  getSelectedComment,
+} from "../../store/features/comments/selectors/comments";
 import { Comment } from "../../api/Services/CommentsService/type";
 import { commentAction } from "../../store/features/comments/commentSlice/commentSlice";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { fetchAllComments } from "../../store/features/comments/model/fetchAllComments";
+import { fetchCommentById } from "../../store/features/comments/model/fetchCommentById";
 
 export function useComments() {
   const navigate = useNavigate();
@@ -18,7 +24,7 @@ export function useComments() {
   const selectedData = useSelector(getSelectedComment);
 
   const getAllComments = useCallback(async () => {
-    dispatch(fetchAllComments())
+    dispatch(fetchAllComments());
     // dispatch(commentAction.setLoading(true));
     // dispatch(commentAction.setError(undefined));
     // try {
@@ -32,32 +38,36 @@ export function useComments() {
     // }
   }, [dispatch]);
 
-  const selectComment = useCallback(
-    (comment: Comment) => {
-      dispatch(commentAction.selectComment(comment));
-    },
-    [dispatch]
-  );
+  // const selectComment = useCallback(
+  //   (comment: Comment) => {
+  //     dispatch(commentAction.selectComment(comment));
+  //   },
+  //   [dispatch]
+  // );
 
   const navigateSingleCommentPage = useCallback(
     (comment: Comment) => {
       navigate(`${comment.id}`);
-      selectComment(comment);
+      dispatch(commentAction.selectComment(comment));
     },
     [navigate]
   );
 
-  const getComment = useCallback(async (commentId: number) => {
-    dispatch(commentAction.setLoading(true));
-    try {
-      const comment = await commentsService.getCommentById(commentId);
-      selectComment(comment);
-    } catch (error) {
-      console.warn(error);
-    } finally {
-      dispatch(commentAction.setLoading(false));
-    }
-  }, []);
+  const getComment = useCallback(
+    (commentId: number) => {
+      dispatch(fetchCommentById(commentId));
+      // dispatch(commentAction.setLoading(true));
+      // try {
+      //   const comment = await commentsService.getCommentById(commentId);
+      //   selectComment(comment);
+      // } catch (error) {
+      //   console.warn(error);
+      // } finally {
+      //   dispatch(commentAction.setLoading(false));
+      // }
+    },
+    [dispatch]
+  );
 
   return {
     comments: data,

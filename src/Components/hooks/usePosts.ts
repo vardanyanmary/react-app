@@ -12,6 +12,7 @@ import { Post } from "../../api/Services/PostsService/types";
 import { postActions } from "../../store/features/posts";
 import { fetchAllPosts } from "../../store/features/posts/model/fetchAllPosts";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { fetchPostById } from "../../store/features/posts/model/fetchPostById";
 
 export function usePosts() {
   const navigate = useNavigate();
@@ -38,34 +39,31 @@ export function usePosts() {
     // }
   }, [dispatch]);
 
-  const selectPost = useCallback(
-    (post: Post) => {
-      dispatch(postActions.selectPosts(post));
-    },
-    [dispatch]
-  );
+
 
   const navigateSinglePostPage = useCallback(
     (post: Post) => {
       navigate(`${post.id}`);
-      selectPost(post);
+      dispatch(postActions.selectPost(post));
     },
     [navigate]
   );
 
   const getPost = useCallback(
-    async (postId: number) => {
-      dispatch(postActions.setLoading(true));
-      try {
-        const post = await postsService.getPostById(postId);
-        selectPost(post);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        dispatch(postActions.setLoading(false));
-      }
+
+     (postId: number) => {
+      dispatch(fetchPostById(postId))
+    //   dispatch( postActions.setLoading(true) );
+    //   try {
+    //     const post = await postsService.getPostById(postId);
+    //      dispatch(postActions.selectPosts(post));
+    //   } catch (error) {
+    //     console.error(error);
+    //   } finally {
+    //     dispatch(postActions.setLoading(false));
+    //   }
     },
-    [dispatch, selectPost]
+    [dispatch]
   );
 
   return {

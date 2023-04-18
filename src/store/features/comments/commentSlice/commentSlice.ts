@@ -3,6 +3,7 @@ import { CommentsStateSchema } from "../types/comments";
 import { Comment } from "../../../../api/Services/CommentsService/type";
 import { fetchAllComments } from "../model/fetchAllComments";
 import { ErrorMessage } from "../../../../constants/errorMassages";
+import { fetchCommentById } from "../model/fetchCommentById";
 
 const initialState: CommentsStateSchema = {
   data: [],
@@ -36,11 +37,19 @@ const commentSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchAllComments.rejected, (state, action) => {
-        // if(action.error.code) {
-        //     state.error = action.error.code;
-        // }else {
-        //     state.error = ErrorMessage.NOT_FOUND
-        // }
+        state.error = action.payload as ErrorMessage;
+        state.isLoading = false;
+      });
+      
+    builder
+      .addCase(fetchCommentById.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchCommentById.fulfilled, (state, action) => {
+        state.selectComment = action.payload as Comment;
+        state.isLoading = false;
+      })
+      .addCase(fetchCommentById.rejected, (state, action) => {
         state.error = action.payload as ErrorMessage;
         state.isLoading = false;
       });

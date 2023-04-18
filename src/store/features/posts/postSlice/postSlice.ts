@@ -3,6 +3,7 @@ import { Post } from "../../../../api/Services/PostsService/types";
 import { PostsStateSchema } from "../types/posts";
 import { fetchAllPosts } from "../model/fetchAllPosts";
 import { ErrorMessage } from "../../../../constants/errorMassages";
+import { fetchPostById } from "../model/fetchPostById";
 
 const initialState: PostsStateSchema = {
   data: [],
@@ -23,7 +24,7 @@ const postSlice = createSlice({
     setError: (state, action: PayloadAction<ErrorMessage | undefined>) => {
       state.error = action.payload;
     },
-    selectPosts: (state, action: PayloadAction<Post>) => {
+    selectPost: (state, action: PayloadAction<Post>) => {
       state.selectedData = action.payload;
     },
   },
@@ -31,7 +32,6 @@ const postSlice = createSlice({
   extraReducers: (builder) => {
     builder
       // addCase<ActionCreator, function (te inch petqa ani et yntacqum )> ActionCreator - stex darnuma fetchAllPosts
-
       .addCase(fetchAllPosts.pending, (state) => {
         // Loading
         state.isLoading = true;
@@ -42,9 +42,20 @@ const postSlice = createSlice({
         state.data = action.payload;
         state.isLoading = false;
       })
-
       .addCase(fetchAllPosts.rejected, (state, action) => {
         // rejecta exel
+        state.error = action.payload as ErrorMessage;
+        state.isLoading = false;
+      });
+    builder
+      .addCase(fetchPostById.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchPostById.fulfilled, (state, action) => {
+        state.selectedData = action.payload as Post;
+        state.isLoading = false;
+      })
+      .addCase(fetchPostById.rejected, (state, action) => {
         state.error = action.payload as ErrorMessage;
         state.isLoading = false;
       });

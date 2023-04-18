@@ -4,13 +4,16 @@ import { postReducer } from "./features/posts";
 import { commentReducer } from "./features/comments/commentSlice/commentSlice";
 import { todoReducer } from "./features/todos/todoSlice/todoSlice";
 import { albumReducer } from "./features/albums/albumSlice/albumSlice";
+import { userReducer } from "./features/users/userSlice/userSlice";
 
 export const store = configureStore({
   reducer: {
     posts : postReducer,
     comments : commentReducer,
     todos : todoReducer,
-    albums : albumReducer
+    albums : albumReducer,
+    users : userReducer
+
 },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
 

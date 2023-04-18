@@ -12,6 +12,7 @@ import {
 } from "../../store/features/albums/selectors/albums";
 import { fetchAllAlbums } from "../../store/features/albums/model/fetchAllAlbums";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { fetchAlbumById } from "../../store/features/albums/model/fetchAlbumById";
 
 export function useAlbums() {
   const navigate = useNavigate();
@@ -35,34 +36,36 @@ export function useAlbums() {
     // } finally {
     //   dispatch(albumAction.setLoading(false));
     // }
-  }, []);
+  }, [dispatch]);
 
-  const selectAlbum = useCallback(
-    (album: Album) => {
-      dispatch(albumAction.selectAlbum(album));
-    },
-    [dispatch]
-  );
+  // const selectAlbum = useCallback(
+  //   (album: Album) => {
+  //     dispatch(albumAction.selectAlbum(album));
+  //   },
+  //   [dispatch]
+  // );
 
   const navigateSingleAlbumsPage = useCallback(
     (album: Album) => {
       navigate(`${album.id}`);
-      selectAlbum(album);
+      dispatch(albumAction.selectAlbum(album));
     },
     [navigate]
   );
 
-  const getAlbum = useCallback(async (albumId: number) => {
-    dispatch(albumAction.setLoading(true));
-    try {
-      const album = await albumsService.getAlbumById(albumId);
-      selectAlbum(album);
-    } catch (error) {
-      console.warn(error);
-    } finally {
-      dispatch(albumAction.setLoading(false));
-    }
-  }, []);
+  const getAlbum = useCallback(
+    (albumId: number) => {
+      dispatch(fetchAlbumById(albumId))
+    // dispatch(albumAction.setLoading(true));
+    // try {
+    //   const album = await albumsService.getAlbumById(albumId);
+    //   selectAlbum(album);
+    // } catch (error) {
+    //   console.warn(error);
+    // } finally {
+    //   dispatch(albumAction.setLoading(false));
+    // }
+  }, [dispatch]);
 
   return {
     albums: data,

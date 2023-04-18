@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    padding: 0;
+}
+
+.UsersList {
+    color: var(--primary-color);
+    font-size: 25px;
+    padding: 10px;
+    text-align: center;
+    font: var(--font-l);
+}
+
+.usersP {
+    color: var(--inverted-primary-color);
+    padding: 15px;
+    font: var(--font-m);
+    text-align: center;
+}
+
+.UserssPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--primary-color);
+    font: var(--font-xl);
+}

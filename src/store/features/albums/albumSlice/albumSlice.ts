@@ -3,6 +3,7 @@ import { AlbumsStateSchema } from "../types/albums";
 import { Album } from "../../../../api/Services/AlbumsService/types";
 import { fetchAllAlbums } from "../model/fetchAllAlbums";
 import { ErrorMessage } from "../../../../constants/errorMassages";
+import { fetchAlbumById } from "../model/fetchAlbumById";
 
 const initialState: AlbumsStateSchema = {
   data: [],
@@ -36,11 +37,18 @@ const albumSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchAllAlbums.rejected, (state, action) => {
-        // if(action.error.code) {
-        //     state.error = action.error.code;
-        // }else {
-        //     state.error = ErrorMessage.NOT_FOUND
-        // }
+        state.error = action.payload as ErrorMessage;
+        state.isLoading = false;
+      });
+    builder
+      .addCase(fetchAlbumById.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchAlbumById.fulfilled, (state, action) => {
+        state.selectAlbum = action.payload as Album;
+        state.isLoading = false;
+      })
+      .addCase(fetchAlbumById.rejected, (state, action) => {
         state.error = action.payload as ErrorMessage;
         state.isLoading = false;
       });
