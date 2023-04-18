@@ -9,7 +9,7 @@ function App() {
   const { theme } = useTheme();
 
   const {userIsAuth} = useAuth();
-
+ 
   return (
     <div className={`App ${theme}`}>
       <Navbar/>

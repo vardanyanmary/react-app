@@ -3,7 +3,7 @@ import { Post } from "../../../../api/Services/PostsService/types";
 import { api } from "../../../../api/api";
 import { AsyncThunkConfig } from "../../../../shared/types/asyncThunkConfig";
 import { errorHandler } from "../../../../shared/utils/errorHandler";
-
+ 
 export const fetchAllPosts = createAsyncThunk<Post[], void, AsyncThunkConfig >(
     'postSlice/fetchAllPosts',
     async (_, thunkApi) => {

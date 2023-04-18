@@ -6,7 +6,7 @@ import { Dispatch } from "redux";
 
 type ThunkApi = BaseThunkAPI<RootState, any, Dispatch, ErrorMessage>;
 
-
+ 
 
 export function errorHandler(error: AxiosError, thunkApi: ThunkApi) {
 
