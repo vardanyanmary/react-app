@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import Button from "../../shared/UI/Button/Button";
+import Button from "shared/UI/Button/Button";
 import cls from "./CounterPage.module.scss";
 
 export const CounterPage = () => {

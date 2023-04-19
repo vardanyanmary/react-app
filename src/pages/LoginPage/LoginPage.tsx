@@ -1,7 +1,7 @@
 import { useAuth } from 'Providers/AuthProvider'
-import cls from './LoginPage.module.scss'
 import { Input } from 'shared/UI/Input/Input'
 import Button from 'shared/UI/Button/Button'
+import cls from './LoginPage.module.scss'
 
 
 const LoginPage = () => {
@@ -30,7 +30,7 @@ const LoginPage = () => {
         onChange={changePassword}
       />
 
-      <Button className={cls.loginBtn} onClick={logIn}> login </Button>
+      <Button className={cls.loginBtn} onClick={logIn}> Log In </Button>
 
     </div>
   )

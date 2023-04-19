@@ -1,12 +1,17 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { getSelectedToDo, getToDosData, getToDosError, getToDosLoading } from "../../store/features/todos/selectors/todos";
-import { ToDo } from "../../api/Services/ToDosService/types";
-import { todoAction } from "../../store/features/todos/todoSlice/todoSlice";
-import { useAppDispatch } from "../../shared/hooks/useAppDispatch";
-import { fetchAllToDos } from "../../store/features/todos/model/fetchAllToDos";
-import { fetchToDoById } from "../../store/features/todos/model/fetchToDoById";
+import {
+  getSelectedToDo,
+  getToDosData,
+  getToDosError,
+  getToDosLoading,
+} from "store/features/todos/selectors/todos";
+import { ToDo } from "api/Services/ToDosService/types";
+import { todoAction } from "store/features/todos/todoSlice/todoSlice";
+import { fetchAllToDos } from "store/features/todos/model/fetchAllToDos";
+import { fetchToDoById } from "store/features/todos/model/fetchToDoById";
+import { useAppDispatch } from "shared/hooks/useAppDispatch";
 
 export function useToDos() {
   const navigate = useNavigate();
@@ -18,7 +23,7 @@ export function useToDos() {
   const selectedData = useSelector(getSelectedToDo);
 
   const getAllToDos = useCallback(() => {
-    dispatch(fetchAllToDos())
+    dispatch(fetchAllToDos());
     // dispatch(todoAction.setLoading(true));
     // dispatch(todoAction.setError(undefined));
     // try {
@@ -32,7 +37,6 @@ export function useToDos() {
     // }
   }, [dispatch]);
 
-
   const navigateSingleToDoPage = useCallback(
     (todo: ToDo) => {
       navigate(`${todo.id}`);
@@ -43,8 +47,8 @@ export function useToDos() {
   );
 
   const getToDo = useCallback(
-     (todoId: number) => {
-      dispatch(fetchToDoById(todoId))
+    (todoId: number) => {
+      dispatch(fetchToDoById(todoId));
       // dispatch(todoAction.setLoading(true));
       // try {
       //   const todo = await toDoService.getToDoById(todoId);

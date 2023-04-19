@@ -1,18 +1,17 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import commentsService from "../../api/Services/CommentsService/CommentsService";
 import {
   getCommentsData,
   getCommentsError,
   getCommentsLoading,
   getSelectedComment,
-} from "../../store/features/comments/selectors/comments";
-import { Comment } from "../../api/Services/CommentsService/type";
-import { commentAction } from "../../store/features/comments/commentSlice/commentSlice";
-import { useAppDispatch } from "../../shared/hooks/useAppDispatch";
-import { fetchAllComments } from "../../store/features/comments/model/fetchAllComments";
-import { fetchCommentById } from "../../store/features/comments/model/fetchCommentById";
+} from "store/features/comments/selectors/comments";
+import { Comment } from "api/Services/CommentsService/type";
+import { commentAction } from "store/features/comments/commentSlice/commentSlice";
+import { fetchAllComments } from "store/features/comments/model/fetchAllComments";
+import { fetchCommentById } from "store/features/comments/model/fetchCommentById";
+import { useAppDispatch } from "shared/hooks/useAppDispatch";
 
 export function useComments() {
   const navigate = useNavigate();

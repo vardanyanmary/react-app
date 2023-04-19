@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import Button from "../../../shared/UI/Button/Button"
+import Button from "shared/UI/Button/Button"
 
 export const PageError = () => {
     const navigate = useNavigate()

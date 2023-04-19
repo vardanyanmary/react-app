@@ -1,18 +1,17 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import postsService from "../../api/Services/PostsService/PostsService";
 import { useSelector } from "react-redux";
 import {
   getPostsData,
   getPostsError,
   getPostsLoading,
   getSelectedPost,
-} from "../../store/features/posts/selectors/posts";
-import { Post } from "../../api/Services/PostsService/types";
-import { postActions } from "../../store/features/posts";
-import { fetchAllPosts } from "../../store/features/posts/model/fetchAllPosts";
-import { useAppDispatch } from "../../shared/hooks/useAppDispatch";
-import { fetchPostById } from "../../store/features/posts/model/fetchPostById";
+} from "store/features/posts/selectors/posts";
+import { Post } from "api/Services/PostsService/types";
+import { postActions } from "store/features/posts";
+import { fetchAllPosts } from "store/features/posts/model/fetchAllPosts";
+import { fetchPostById } from "store/features/posts/model/fetchPostById";
+import { useAppDispatch } from "shared/hooks/useAppDispatch";
 
 export function usePosts() {
   const navigate = useNavigate();

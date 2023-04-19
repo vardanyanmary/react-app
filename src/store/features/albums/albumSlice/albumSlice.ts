@@ -1,9 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AlbumsStateSchema } from "../types/albums";
-import { Album } from "../../../../api/Services/AlbumsService/types";
+import { Album } from "api/Services/AlbumsService/types";
 import { fetchAllAlbums } from "../model/fetchAllAlbums";
-import { ErrorMessage } from "../../../../shared/constants/errorMassages";
 import { fetchAlbumById } from "../model/fetchAlbumById";
+import { ErrorMessage } from "shared/constants/errorMassages";
 
 const initialState: AlbumsStateSchema = {
   data: [],

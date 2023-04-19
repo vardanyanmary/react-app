@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
-import UserCard from "../../Components/UI/UserCard/UserCard";
-import { useUsers } from "../../Components/hooks/useUsers";
+import UserCard from "Components/UI/UserCard/UserCard";
+import { useUsers } from "Components/hooks/useUsers";
 import { useEffect } from "react";
 import cls from "./UserSinglePage.module.scss";
 

@@ -1,7 +1,7 @@
 import { Link, redirect, useParams } from "react-router-dom";
 import cls from "./AlbumSinglePage.module.scss";
-import { useAlbums } from "../../Components/hooks/useAlbums";
-import AlbumCard from "../../Components/UI/AlbumCard/AlbumCard";
+import { useAlbums } from "Components/hooks/useAlbums";
+import AlbumCard from "Components/UI/AlbumCard/AlbumCard";
 import { useEffect } from "react";
 
 interface AlbumSinglePageProps {

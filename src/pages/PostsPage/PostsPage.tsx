@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { usePosts } from "../../Components/hooks/usePosts";
-import PostCard from "../../Components/UI/PostCard/PostCard";
+import { usePosts } from "Components/hooks/usePosts";
+import PostCard from "Components/UI/PostCard/PostCard";
 import cls from "./PostsPage.module.scss";
 
 const Posts = () => {

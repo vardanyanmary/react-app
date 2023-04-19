@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useToDos } from "../../Components/hooks/useToDos";
-import ToDoCard from "../../Components/UI/ToDoCard/ToDoCard";
+import { useToDos } from "Components/hooks/useToDos";
+import ToDoCard from "Components/UI/ToDoCard/ToDoCard";
 import cls from "./ToDos.module.scss";
 
 const ToDos = () => {

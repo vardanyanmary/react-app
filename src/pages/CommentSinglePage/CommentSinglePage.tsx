@@ -1,7 +1,7 @@
 import { Link, redirect, useParams } from "react-router-dom";
-import { useComments } from "../../Components/hooks/useComments";
 import { useEffect } from "react";
-import CommentCard from "../../Components/UI/CommentCard/CommentCard";
+import CommentCard from "Components/UI/CommentCard/CommentCard";
+import { useComments } from "Components/hooks/useComments";
 import cls from "./CommentSinglePage.module.scss";
 
 interface CommentSinglePageProps {

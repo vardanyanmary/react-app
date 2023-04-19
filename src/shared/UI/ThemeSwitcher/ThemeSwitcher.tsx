@@ -1,4 +1,4 @@
-import { useTheme } from "../../../Providers/ThemeProvider";
+import { useTheme } from "Providers/ThemeProvider";
 import Button from "../Button/Button";
 import cls from "./ThemeSwitcher.module.scss";
 

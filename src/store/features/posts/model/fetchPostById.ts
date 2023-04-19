@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Post } from "../../../../api/Services/PostsService/types";
-import postsService from "../../../../api/Services/PostsService/PostsService";
-import { AsyncThunkConfig } from "../../../../shared/types/asyncThunkConfig";
-import { errorHandler } from "../../../../shared/utils/errorHandler";
+import { Post } from "api/Services/PostsService/types";
+import postsService from "api/Services/PostsService/PostsService";
+import { AsyncThunkConfig } from "shared/types/asyncThunkConfig";
+import { errorHandler } from "shared/utils/errorHandler";
  
 export const fetchPostById = createAsyncThunk<Post | null, number, AsyncThunkConfig>(
     'postSlice/fetchPostById',

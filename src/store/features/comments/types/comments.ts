@@ -1,5 +1,5 @@
-import { Comment } from "../../../../api/Services/CommentsService/type";
-import { ErrorMessage } from "../../../../shared/constants/errorMassages";
+import { Comment } from "api/Services/CommentsService/type";
+import { ErrorMessage } from "shared/constants/errorMassages";
 
 export interface CommentsStateSchema {
     data: Comment[];

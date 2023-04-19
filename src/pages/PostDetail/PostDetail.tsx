@@ -1,7 +1,7 @@
 import { Link, redirect, useParams } from "react-router-dom";
-import { usePosts } from "../../Components/hooks/usePosts";
 import { useEffect } from "react";
-import PostCard from "../../Components/UI/PostCard/PostCard";
+import PostCard from "Components/UI/PostCard/PostCard";
+import { usePosts } from "Components/hooks/usePosts";
 import cls from "./PostDetail.module.scss";
 
 interface PostPageParams {

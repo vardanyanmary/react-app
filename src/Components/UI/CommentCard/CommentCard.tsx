@@ -1,4 +1,4 @@
-import { Comment } from "../../../api/Services/CommentsService/type";
+import { Comment } from "api/Services/CommentsService/type";
 import cls from "./CommentCard.module.scss";
 
 interface CommentCardProps {

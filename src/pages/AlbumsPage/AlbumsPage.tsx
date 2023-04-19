@@ -1,5 +1,5 @@
-import AlbumCard from "../../Components/UI/AlbumCard/AlbumCard";
-import { useAlbums } from "../../Components/hooks/useAlbums";
+import AlbumCard from "Components/UI/AlbumCard/AlbumCard";
+import { useAlbums } from "Components/hooks/useAlbums";
 import cls from "./AlbumsPage.module.scss";
 import { useEffect } from "react";
 

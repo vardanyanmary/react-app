@@ -1,6 +1,6 @@
 import { Link, redirect, useParams } from "react-router-dom";
-import ToDoCard from "../../Components/UI/ToDoCard/ToDoCard";
-import { useToDos } from "../../Components/hooks/useToDos";
+import ToDoCard from "Components/UI/ToDoCard/ToDoCard";
+import { useToDos } from "Components/hooks/useToDos";
 import { useEffect } from "react";
 import cls from  "./ToDoSinglePage.module.scss";
 

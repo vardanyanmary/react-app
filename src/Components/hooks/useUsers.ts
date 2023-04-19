@@ -1,12 +1,12 @@
 import { useCallback } from "react";
-import { useAppDispatch } from "../../shared/hooks/useAppDispatch";
 import { useNavigate } from "react-router-dom";
-import { fetchAllUsers } from "../../store/features/users/model/fetchAllUsers";
-import { User } from "../../api/Services/UsersService/types";
+import { fetchAllUsers } from "store/features/users/model/fetchAllUsers";
+import { User } from "api/Services/UsersService/types";
 import { useSelector } from "react-redux";
-import { getSelectedUser, getUsersData, getUsersError, getUsersLoading } from "../../store/features/users/selectors/users";
-import { fetchUserById } from "../../store/features/users/model/fetchUserById";
-import { userAction } from "../../store/features/users/userSlice/userSlice";
+import { getSelectedUser, getUsersData, getUsersError, getUsersLoading } from "store/features/users/selectors/users";
+import { fetchUserById } from "store/features/users/model/fetchUserById";
+import { userAction } from "store/features/users/userSlice/userSlice";
+import { useAppDispatch } from "shared/hooks/useAppDispatch";
 
 export function useUsers() {
   const navigate = useNavigate();

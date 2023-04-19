@@ -1,4 +1,4 @@
-import Content from "../../Components/UI/Content/Content";
+import Content from "Components/UI/Content/Content";
 
 export interface Data {
     content: string;

@@ -1,5 +1,5 @@
-import CommentCard from "../../Components/UI/CommentCard/CommentCard";
-import { useComments } from "../../Components/hooks/useComments";
+import CommentCard from "Components/UI/CommentCard/CommentCard";
+import { useComments } from "Components/hooks/useComments";
 import { useEffect } from "react";
 import cls from "./CommentsPage.module.scss";
 

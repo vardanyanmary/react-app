@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Album } from "../../../../api/Services/AlbumsService/types";
-import albumsService from "../../../../api/Services/AlbumsService/AlbumsService";
-import { AsyncThunkConfig } from "../../../../shared/types/asyncThunkConfig";
-import { errorHandler } from "../../../../shared/utils/errorHandler";
+import { Album } from "api/Services/AlbumsService/types";
+import albumsService from "api/Services/AlbumsService/AlbumsService";
+import { AsyncThunkConfig } from "shared/types/asyncThunkConfig";
+import { errorHandler } from "shared/utils/errorHandler";
 
 export const fetchAlbumById = createAsyncThunk< Album | null, number, AsyncThunkConfig>( 
     "albumSlice/fetchAlbumById", 

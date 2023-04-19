@@ -1,4 +1,4 @@
-import { ToDo } from "../../../api/Services/ToDosService/types";
+import { ToDo } from "api/Services/ToDosService/types";
 import cls from "./ToDoCard.module.scss";
 
 interface ToDoCardProps {

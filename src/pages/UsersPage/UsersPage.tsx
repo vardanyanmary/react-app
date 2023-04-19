@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useUsers } from "../../Components/hooks/useUsers";
-import UserCard from "../../Components/UI/UserCard/UserCard";
+import { useUsers } from "Components/hooks/useUsers";
+import UserCard from "Components/UI/UserCard/UserCard";
 import cls from "./UsersPage.module.scss";
 
 const UsersPage = () => {

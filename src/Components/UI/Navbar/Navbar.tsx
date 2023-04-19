@@ -1,4 +1,4 @@
-import { useAuth } from "../../../Providers/AuthProvider";
+import { useAuth } from "Providers/AuthProvider";
 import {AppLink} from "shared/UI/AppLink/AppLink";
 import Button from "shared/UI/Button/Button";
 import cls from "./Navbar.module.scss";

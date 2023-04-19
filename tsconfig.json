@@ -18,6 +18,10 @@
     "baseUrl": "./src",
     "paths": {
       "@shared":["shared/*"],
+      "@store":["store/*"],
+      "@api":["api/*"],
+      "@model":["model/*"],
+      "@Components":["Components/*"],
       "@providers":["Providers/*"]
     }
   },

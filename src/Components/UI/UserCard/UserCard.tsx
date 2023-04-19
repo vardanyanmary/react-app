@@ -1,4 +1,4 @@
-import { User } from "../../../api/Services/UsersService/types";
+import { User } from "api/Services/UsersService/types";
 import cls from "./UserCard.module.scss";
 
 interface UserCardProps {

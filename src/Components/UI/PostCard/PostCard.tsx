@@ -1,4 +1,4 @@
-import { Post } from "../../../api/Services/PostsService/types";
+import { Post } from "api/Services/PostsService/types";
 import cls from "./PostCard.module.scss";
 
 interface PostCardProps {

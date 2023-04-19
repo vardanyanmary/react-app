@@ -1,4 +1,4 @@
-import { Album } from "../../../api/Services/AlbumsService/types";
+import { Album } from "api/Services/AlbumsService/types";
 import cls from "./AlbumCard.module.scss";
 
 interface AlbumCardProps {

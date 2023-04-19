@@ -1,18 +1,17 @@
 import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import albumsService from "../../api/Services/AlbumsService/AlbumsService";
-import { Album } from "../../api/Services/AlbumsService/types";
-import { albumAction } from "../../store/features/albums/albumSlice/albumSlice";
+import { Album } from "api/Services/AlbumsService/types";
+import { albumAction } from "store/features/albums/albumSlice/albumSlice";
 import {
   getAlbumsData,
   getAlbumsError,
   getAlbumsLoading,
   getSelectedAlbum,
-} from "../../store/features/albums/selectors/albums";
-import { fetchAllAlbums } from "../../store/features/albums/model/fetchAllAlbums";
-import { useAppDispatch } from "../../shared/hooks/useAppDispatch";
-import { fetchAlbumById } from "../../store/features/albums/model/fetchAlbumById";
+} from "store/features/albums/selectors/albums";
+import { fetchAllAlbums } from "store/features/albums/model/fetchAllAlbums";
+import { fetchAlbumById } from "store/features/albums/model/fetchAlbumById";
+import { useAppDispatch } from "shared/hooks/useAppDispatch";
 
 export function useAlbums() {
   const navigate = useNavigate();

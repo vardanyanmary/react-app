@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import useLocalStorage from '../../shared/hooks/useLocalStorage';
-import { LOCALSTORAGE_KEYS } from "../../shared/constants/localStorage"
+import useLocalStorage from 'shared/hooks/useLocalStorage';
+import { LOCALSTORAGE_KEYS } from "shared/constants/localStorage"
 
 interface User {
     username: string;
