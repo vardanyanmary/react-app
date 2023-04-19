@@ -1,8 +1,8 @@
 import { Link, redirect, useParams } from "react-router-dom";
-import CommentCard from "../../Components/CommentCard/CommentCard";
-import "./CommentSinglePage.scss";
 import { useComments } from "../../Components/hooks/useComments";
 import { useEffect } from "react";
+import CommentCard from "../../Components/UI/CommentCard/CommentCard";
+import cls from "./CommentSinglePage.module.scss";
 
 interface CommentSinglePageProps {
   id: string; //string , because from link
@@ -23,11 +23,11 @@ const CommentSinglePage = () => {
   }, [getComment, id, selectedData]);
 
   if (error) {
-    return <div className="CommentSinglePage">{error}</div>;
+    return <div className={cls.CommentSinglePage}>{error}</div>;
   }
   
   return (
-    <div className="CommentSinglePage">
+    <div className={cls.CommentSinglePage}>
       {!isLoading && selectedData ? (
         <>
           <CommentCard comment={selectedData} />

@@ -1,7 +1,7 @@
-import CommentCard from "../../Components/CommentCard/CommentCard";
+import CommentCard from "../../Components/UI/CommentCard/CommentCard";
 import { useComments } from "../../Components/hooks/useComments";
-import "./CommentsPage.scss";
 import { useEffect } from "react";
+import cls from "./CommentsPage.module.scss";
 
 const CommentsPage = () => {
   const {
@@ -19,15 +19,15 @@ const CommentsPage = () => {
   }, [getAllComments, comments]);
 
   if (isLoading) {
-    return <div className="CommentsPage">Loading...</div>;
+    return <div className={cls.CommentsPage}>Loading...</div>;
   }
 
   if (error) {
-    return <div className="CommentsPage">{error}</div>;
+    return <div className={cls.CommentsPage}>{error}</div>;
   }
 
   return (
-    <div className="CommentsList">
+    <div className={cls.CommentsList}>
       <h2> Comments List </h2>
       <div>
         {comments.map((comment) => (

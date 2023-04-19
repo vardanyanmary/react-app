@@ -1,8 +1,8 @@
-import './NotFound.scss'
+import cls from './NotFound.module.scss'
 
 export const NotFound = () => {
     return (
-        <div className="NotFound">
+        <div className={cls.NotFound}>
             Page not found
         </div>
     )

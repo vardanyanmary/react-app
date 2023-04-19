@@ -1,12 +1,12 @@
 import { useTheme } from "../../../Providers/ThemeProvider";
 import Button from "../Button/Button";
-import "./ThemeSwitcher.scss";
+import cls from "./ThemeSwitcher.module.scss";
 
 export const ThemeSwitcher = () => {
   const { toggleTheme } = useTheme();
 
   return (
-    <span className="ThemeSwitcher">
+    <span className={cls.ThemeSwitcher}>
       <Button type="secondary" onClick={toggleTheme}>
         Switch Mode
       </Button>

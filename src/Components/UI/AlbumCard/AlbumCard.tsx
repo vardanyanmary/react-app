@@ -1,5 +1,5 @@
-import { Album } from "../../api/Services/AlbumsService/types";
-import "./AlbumCard.scss";
+import { Album } from "../../../api/Services/AlbumsService/types";
+import cls from "./AlbumCard.module.scss";
 
 interface AlbumCardProps {
   album: Album;
@@ -10,7 +10,7 @@ const AlbumCard = ({ album, navigateSingleAlbumPage }: AlbumCardProps) => {
   if (navigateSingleAlbumPage) {
     return (
       <p
-        className="AlbumCard withNavigation"
+        className = {`${cls.AlbumCard} ${cls.withNavigation}`}
         onClick={() => navigateSingleAlbumPage(album)}
       >
         {album.title}
@@ -19,7 +19,7 @@ const AlbumCard = ({ album, navigateSingleAlbumPage }: AlbumCardProps) => {
   }
 
   return (
-    <div className="AlbumCard">
+    <div className={cls.AlbumCard}>
       <h2>{album.title}</h2>
     </div>
   );

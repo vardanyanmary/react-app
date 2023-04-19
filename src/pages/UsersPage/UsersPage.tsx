@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useUsers } from "../../Components/hooks/useUsers";
-import UserCard from "../../Components/UserCard/UserCard";
-import "./UsersPage.scss";
+import UserCard from "../../Components/UI/UserCard/UserCard";
+import cls from "./UsersPage.module.scss";
 
 const UsersPage = () => {
   const { getAllUsers, users, error, isLoading, navigateSingleUserPage } =
@@ -14,15 +14,15 @@ const UsersPage = () => {
   }, [getAllUsers, users]);
 
   if (isLoading) {
-    return <div className="UsersPage">Loading...</div>;
+    return <div className={cls.UsersPage}>Loading...</div>;
   }
 
   if (error) {
-    return <div className="UsersPage">{error}</div>;
+    return <div className={cls.UsersPage}>{error}</div>;
   }
 
   return (
-    <div className="UsersList">
+    <div className={cls.UsersList}>
       <h2> Users List </h2>
       <div>
         {users.map((user) => (

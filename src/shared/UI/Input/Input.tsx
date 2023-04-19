@@ -1,19 +1,18 @@
 import { memo } from "react";
-import "./Input.scss";
+import cls from "./Input.module.scss";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
 }
 
-const Input = memo((props: InputProps) => {
+export const Input = memo((props: InputProps) => {
   const { label, ...inputProps } = props;
 
   return (
-    <div className="InputDiv">
+    <div className={cls.InputDiv}>
       {label && <span>{label}</span>}
       <input type="text" {...inputProps} />
     </div>
   );
 })
 
-export default Input;

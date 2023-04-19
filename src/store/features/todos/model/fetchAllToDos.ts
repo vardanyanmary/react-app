@@ -1,25 +1,18 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { api } from "../../../../api/api";
-import { ErrorMessage } from "../../../../shared/constants/errorMassages";
 import { ToDo } from "../../../../api/Services/ToDosService/types";
 import { AsyncThunkConfig } from "../../../../shared/types/asyncThunkConfig";
+import { errorHandler } from "../../../../shared/utils/errorHandler";
+import toDoService from "../../../../api/Services/ToDosService/ToDosService";
 
 export const fetchAllToDos = createAsyncThunk<ToDo[], void, AsyncThunkConfig >(
     'todoSlice/fetchAllToDos',
     async (_, thunkApi) => {
         try {
-            const response = await api.get<ToDo[]>('todos')
-            // if (response.status < 200 || response.status >= 300) {
-            //     return thunkApi.rejectWithValue(response.data)
-            // }
-            return response.data
+            const response = await toDoService.getAllToDos()
+            return response
         } catch (error: any) {
-            console.log(error);
+            return errorHandler(error , thunkApi)
 
-            if (error.code === ErrorMessage.ERR_BAD_REQUEST) {
-                return thunkApi.rejectWithValue(ErrorMessage.ERR_BAD_REQUEST)
-            }
-            return []
                  // return thunkApi.rejectWithValue(error)
 
         }

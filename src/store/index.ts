@@ -16,7 +16,6 @@ export const store = configureStore({
 
 },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
-
 })
 
 export type RootState = ReturnType<typeof store.getState>;

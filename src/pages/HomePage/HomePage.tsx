@@ -1,5 +1,4 @@
-import { useSelector } from "react-redux";
-import Content from "../../Components/Content/Content";
+import Content from "../../Components/UI/Content/Content";
 
 export interface Data {
     content: string;

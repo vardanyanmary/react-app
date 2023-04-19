@@ -1,6 +1,6 @@
-import AlbumCard from "../../Components/AlbumCard/AlbumCard";
+import AlbumCard from "../../Components/UI/AlbumCard/AlbumCard";
 import { useAlbums } from "../../Components/hooks/useAlbums";
-import "./AlbumsPage.scss";
+import cls from "./AlbumsPage.module.scss";
 import { useEffect } from "react";
 
 const AlbumsPage = () => {
@@ -19,15 +19,15 @@ const AlbumsPage = () => {
   }, [getAllAlbums, albums]);
 
   if (isLoading) {
-    return <div className="AlbumsPage">Loading...</div>;
+    return <div className={cls.AlbumsPage}>Loading...</div>;
   }
 
   if (error) {
-    return <div className="AlbumsPage">{error}</div>;
+    return <div className={cls.AlbumsPage}>{error}</div>;
   }
 
   return (
-    <div className="AlbumsList">
+    <div className={cls.AlbumsList}>
       <h2> Albums List </h2>
       <div>
         {albums.map((album) => (

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import "./CounterPage.scss";
 import Button from "../../shared/UI/Button/Button";
+import cls from "./CounterPage.module.scss";
 
 export const CounterPage = () => {
   const state = useSelector((state) => state) as any;
@@ -22,12 +22,13 @@ export const CounterPage = () => {
   };
 
   return (
-    <div className="CounterPage">
+    <div className={cls.CounterPage}>
       <Button onClick={handleIncrement} type="secondary">
         Increment
       </Button>
 
-      <h1>{state.counter.count}</h1>
+      {/* <h1>{state.counter.count}</h1> */}
+      <h1>{0}</h1>
 
       <Button onClick={handleDecrement} type="secondary">
         Decrement

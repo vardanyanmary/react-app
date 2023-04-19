@@ -1,9 +1,8 @@
 import { Link, redirect, useParams } from "react-router-dom";
-import "./ToDoSinglePage.scss";
-import ToDoCard from "../../Components/ToDoCard/ToDoCard";
+import ToDoCard from "../../Components/UI/ToDoCard/ToDoCard";
 import { useToDos } from "../../Components/hooks/useToDos";
 import { useEffect } from "react";
-import { error } from "console";
+import cls from  "./ToDoSinglePage.module.scss";
 
 interface ToDoSinglePageProps {
   id: string;
@@ -24,10 +23,10 @@ const ToDoSinglePage = () => {
   }, [getToDo, id, selectedData]);
 
   if (error) {
-    return <div className="ToDosPage">{error}</div>;
+    return <div className={cls.ToDosPage}>{error}</div>;
   }
   return (
-    <div className="ToDoSinglePage">
+    <div className={cls.ToDoSinglePage}>
       {!isLoading && selectedData ? (
         <>
           <ToDoCard todo={selectedData} />

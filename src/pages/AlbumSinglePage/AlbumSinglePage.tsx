@@ -1,8 +1,8 @@
 import { Link, redirect, useParams } from "react-router-dom";
-import "./AlbumSinglePage.scss";
-import { useEffect } from "react";
+import cls from "./AlbumSinglePage.module.scss";
 import { useAlbums } from "../../Components/hooks/useAlbums";
-import AlbumCard from "../../Components/AlbumCard/AlbumCard";
+import AlbumCard from "../../Components/UI/AlbumCard/AlbumCard";
+import { useEffect } from "react";
 
 interface AlbumSinglePageProps {
   id: string; //string , because from link
@@ -23,11 +23,11 @@ const AlbumSinglePage = () => {
   }, [getAlbum, id, selectedData]);
 
   if (error) {
-    return <div className="AlbumSinglePage">{error}</div>;
+    return <div className={cls.AlbumSinglePage}>{error}</div>;
   }
   
   return (
-    <div className="AlbumSinglePage">
+    <div className={cls.AlbumSinglePage}>
       {!isLoading && selectedData ? (
         <>
           <AlbumCard album ={selectedData} />

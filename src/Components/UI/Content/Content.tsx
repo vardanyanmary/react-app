@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
-import "./Content.scss";
-import Input from "../../shared/UI/Input/Input";
-import Button from "../../shared/UI/Button/Button";
+import {Input} from "shared/UI/Input/Input";
+import Button from "shared/UI/Button/Button";
+import cls from "./Content.module.scss";
 
 export interface ContentProps {
   content: string;
@@ -19,8 +19,8 @@ const Content: FC<ContentProps> = ({ content }) => {
 
   return (
     <>
-      <main className="Content">
-        <p className="ContentP"> {content} </p>
+      <main className={cls.Content}>
+        <p className={cls.ContentP}> {content} </p>
 
         <form onSubmit={handleSubmit}>
           <Input
@@ -29,19 +29,18 @@ const Content: FC<ContentProps> = ({ content }) => {
             onChange={handleChange}
             value={value}
             label="Username:"
-            className="ContentInputs"
+            className={cls.ContentInputs}
           />
 
-          <Input type="ref" name="ref" label="Ref:" className="ContentInputs" />
+          <Input type="ref" name="ref" label="Ref:" className={cls.ContentInputs} />
           <Input
             type="password"
             name="password"
             label="Password:"
-            className="ContentInputs"
+            className={cls.ContentInputs}
           />
 
           <Button type="primary"> Login </Button>
-		  
         </form>
       </main>
     </>

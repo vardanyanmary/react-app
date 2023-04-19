@@ -1,4 +1,4 @@
-import "./Button.scss";
+import cls from "./Button.module.scss";
 
 interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type' >{
   children: React.ReactNode;
@@ -18,7 +18,7 @@ const Button = (props:ButtonProps) => {
   return ( 
     <span>
       <button 
-        className={`Button ${type}`} 
+        className={`${cls.Button} ${cls.type}`} 
         type={htmlType} 
         {...rest}
       >

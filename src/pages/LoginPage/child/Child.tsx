@@ -1,7 +1,7 @@
-import { useAuth } from 'Providers/AuthProvider'
 import cls from './LoginPage.module.scss'
+import { useAuth } from 'Providers/AuthProvider'
+import { AppLink } from 'shared/UI/AppLink/AppLink'
 import { Input } from 'shared/UI/Input/Input'
-import Button from 'shared/UI/Button/Button'
 
 
 const LoginPage = () => {
@@ -17,21 +17,19 @@ const LoginPage = () => {
     <div className={cls.LoginPage}>
       <Input
         type='text'
-        placeholder='Enter username'
+        placeholder='enter username'
         label='Username'
         value={username}
         onChange={changeUsername}
       />
       <Input
         type='password'
-        placeholder='Enter password'
+        placeholder='enter password'
         label='password'
         value={password}
         onChange={changePassword}
       />
-
-      <Button className={cls.loginBtn} onClick={logIn}> login </Button>
-
+      <button className={cls.loginBtn} onClick={logIn}> login </button>
     </div>
   )
 }

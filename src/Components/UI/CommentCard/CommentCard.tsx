@@ -1,5 +1,5 @@
-import { Comment } from "../../api/Services/CommentsService/type";
-import "./CommentCard.scss";
+import { Comment } from "../../../api/Services/CommentsService/type";
+import cls from "./CommentCard.module.scss";
 
 interface CommentCardProps {
   comment: Comment;
@@ -13,7 +13,7 @@ const CommentCard = ({
   if (navigateSingleCommentPage) {
     return (
       <p
-        className="CommentCard withNavigation"
+        className= {`${cls.CommentCard} ${cls.withNavigation}`}
         onClick={() => navigateSingleCommentPage(comment)}
       >
         {comment.name}
@@ -22,7 +22,7 @@ const CommentCard = ({
   }
 
   return (
-    <div className="CommentCard">
+    <div className={cls.CommentCard}>
       <h2>{comment.name}</h2>
       <h3>{comment.email}</h3>
 

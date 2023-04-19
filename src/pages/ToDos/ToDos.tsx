@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useToDos } from "../../Components/hooks/useToDos";
-import ToDoCard from "../../Components/ToDoCard/ToDoCard";
-import "./ToDos.scss";
+import ToDoCard from "../../Components/UI/ToDoCard/ToDoCard";
+import cls from "./ToDos.module.scss";
 
 const ToDos = () => {
   const { todos, navigateSingleToDoPage, isLoading, error, getAllToDos } = useToDos();
@@ -13,17 +13,17 @@ const ToDos = () => {
 }, [getAllToDos, todos])
 
   if (isLoading) {
-    return <div className="ToDosPage">Loading...</div>;
+    return <div className={cls.ToDosPage}>Loading...</div>;
   }
 
   if (error) {
-    return <div className="ToDosPage">{error}</div>;
+    return <div className={cls.ToDosPage}>{error}</div>;
   }
 
   return (
-    <div className="ToDosList">
+    <div className={cls.ToDosList}>
       <h2> ToDos List </h2>
-      <div className="ToDos">
+      <div className={cls.ToDos}>
         {todos?.map((todo) => (
           <ToDoCard
             todo={todo}

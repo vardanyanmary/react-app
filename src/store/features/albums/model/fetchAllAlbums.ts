@@ -1,25 +1,19 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../../../../api/api";
-import { ErrorMessage } from "../../../../shared/constants/errorMassages";
 import { Album } from "../../../../api/Services/AlbumsService/types";
 import { AsyncThunkConfig } from "../../../../shared/types/asyncThunkConfig";
+import { errorHandler } from "../../../../shared/utils/errorHandler";
+import albumsService from "../../../../api/Services/AlbumsService/AlbumsService";
 
 export const fetchAllAlbums = createAsyncThunk<Album[], void, AsyncThunkConfig>(
     'albumSlice/fetchAllAlbums',
     async (_, thunkApi) => {
         try {
-            const response = await api.get<Album[]>('albums')
-            // if (response.status < 200 || response.status >= 300) {
-            //     return thunkApi.rejectWithValue(response.data)
-            // }
-            return response.data
+            const response = await albumsService.getAllAlbums()
+            return response
         } catch (error: any) {
-            console.log(error);
+            return errorHandler(error , thunkApi)
 
-            if (error.code === ErrorMessage.ERR_BAD_REQUEST) {
-                return thunkApi.rejectWithValue(ErrorMessage.ERR_BAD_REQUEST)
-            }
-            return []
                  // return thunkApi.rejectWithValue(error)
 
         }

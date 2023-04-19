@@ -1,8 +1,8 @@
 import { Link, redirect, useParams } from "react-router-dom";
-import PostCard from "../../Components/PostCard/PostCard";
 import { usePosts } from "../../Components/hooks/usePosts";
-import "./PostDetail.scss";
 import { useEffect } from "react";
+import PostCard from "../../Components/UI/PostCard/PostCard";
+import cls from "./PostDetail.module.scss";
 
 interface PostPageParams {
   id: string;
@@ -23,11 +23,11 @@ const PostDetail = () => {
   }, [getPost, id, selectedData]);
 
   if (error) {
-    return <div className="PostDetail">{error}</div>;
+    return <div className={cls.PostDetail}>{error}</div>;
   }
 
   return (
-    <div className="PostDetail">
+    <div className={cls.PostDetail}>
       {!isLoading && selectedData ? (
         <>
           <PostCard post={selectedData} />
