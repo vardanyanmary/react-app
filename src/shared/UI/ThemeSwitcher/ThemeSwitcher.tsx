@@ -1,5 +1,5 @@
 import { useTheme } from "Providers/ThemeProvider";
-import Button from "../Button/Button";
+import Button from '@mui/material/Button';
 import cls from "./ThemeSwitcher.module.scss";
 
 export const ThemeSwitcher = () => {
@@ -7,7 +7,7 @@ export const ThemeSwitcher = () => {
 
   return (
     <span className={cls.ThemeSwitcher}>
-      <Button type="secondary" onClick={toggleTheme}>
+      <Button onClick={toggleTheme} variant="text">
         Switch Mode
       </Button>
     </span>

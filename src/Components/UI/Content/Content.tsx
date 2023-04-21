@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import {Input} from "shared/UI/Input/Input";
-import Button from "shared/UI/Button/Button";
 import cls from "./Content.module.scss";
+import Button from '@mui/material/Button';
 
 export interface ContentProps {
   content: string;
@@ -31,8 +31,7 @@ const Content: FC<ContentProps> = ({ content }) => {
             label="Username:"
             className={cls.ContentInputs}
           />
-
-          <Input type="ref" name="ref" label="Ref:" className={cls.ContentInputs} />
+          {/* <Input type="ref" name="ref" label="Ref:" className={cls.ContentInputs} /> */}
           <Input
             type="password"
             name="password"
@@ -40,7 +39,8 @@ const Content: FC<ContentProps> = ({ content }) => {
             className={cls.ContentInputs}
           />
 
-          <Button type="primary"> Login </Button>
+          <Button variant="contained"> Login </Button>
+
         </form>
       </main>
     </>

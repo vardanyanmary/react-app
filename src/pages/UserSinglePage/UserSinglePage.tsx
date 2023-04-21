@@ -19,11 +19,11 @@ const UserSinglePage = () => {
   }, [getUser, id, selectedData]);
 
   if (error) {
-    return <div className={cls.AlbumSinglePage}>{error}</div>;
+    return <div className={cls.UserSinglePage}>{error}</div>;
   }
 
   return (
-    <div className={cls.AlbumSinglePage}>
+    <div className={cls.UserSinglePage}>
       {!isLoading && selectedData ? (
         <>
           <UserCard user={selectedData} />
