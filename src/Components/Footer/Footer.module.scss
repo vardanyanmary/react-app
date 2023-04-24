@@ -1,0 +1,14 @@
+.Footer {
+    padding: 20px;
+    background-color: green;
+    display: flex;
+    grid-column-gap: 25px;
+    justify-content: space-evenly;
+}
+
+.Section {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 10px;
+    max-width: 300px;
+}
