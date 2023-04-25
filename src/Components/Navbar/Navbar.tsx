@@ -17,6 +17,7 @@ const Navbar = () => {
           <AppLink to="/albums"> Albums </AppLink>
           <AppLink to="/users"> Users </AppLink>
           <AppLink to="/counter">Counter</AppLink>
+          <AppLink to="/registration">Registrate</AppLink>
         </span>
       ) : (
         <span className={cls.links}>

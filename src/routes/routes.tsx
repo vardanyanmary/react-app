@@ -1,19 +1,28 @@
 import { NotFound } from "../pages/NotFound/NotFound";
 import { HomePage } from "../pages/HomePage/HomePage";
 import { CounterPage } from "../pages/Counter/CounterPage";
-import { lazy } from 'react'
+import RegistrationPage from "pages/RegistrationPage/RegistrationPage";
+import { lazy } from "react";
 
-const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'))
-const PostsPage = lazy(() => import("../pages/PostsPage/PostsPage"))
-const PostDetail = lazy(() => import("../pages/PostDetail/PostDetail"))
-const ToDosPage = lazy(() => import("../pages/ToDos/ToDos"))
-const ToDoSinglePage = lazy(() => import("../pages/ToDoSinglePage/ToDoSinglePage"))
-const CommentsPage = lazy(() => import("../pages/CommentsPage/CommentsPage"))
-const CommentSinglePage = lazy(() => import("../pages/CommentSinglePage/CommentSinglePage"))
-const AlbumsPage = lazy(() => import("../pages/AlbumsPage/AlbumsPage"))
-const AlbumSinglePage = lazy(() => import("../pages/AlbumSinglePage/AlbumSinglePage"))
-const UsersPage = lazy(() => import("../pages/UsersPage/UsersPage"))
-const UserSinglePage = lazy(() => import("../pages/UserSinglePage/UserSinglePage"))
+const LoginPage = lazy(() => import("../pages/LoginPage/LoginPage"));
+const PostsPage = lazy(() => import("../pages/PostsPage/PostsPage"));
+const PostDetail = lazy(() => import("../pages/PostDetail/PostDetail"));
+const ToDosPage = lazy(() => import("../pages/ToDos/ToDos"));
+const ToDoSinglePage = lazy(
+  () => import("../pages/ToDoSinglePage/ToDoSinglePage")
+);
+const CommentsPage = lazy(() => import("../pages/CommentsPage/CommentsPage"));
+const CommentSinglePage = lazy(
+  () => import("../pages/CommentSinglePage/CommentSinglePage")
+);
+const AlbumsPage = lazy(() => import("../pages/AlbumsPage/AlbumsPage"));
+const AlbumSinglePage = lazy(
+  () => import("../pages/AlbumSinglePage/AlbumSinglePage")
+);
+const UsersPage = lazy(() => import("../pages/UsersPage/UsersPage"));
+const UserSinglePage = lazy(
+  () => import("../pages/UserSinglePage/UserSinglePage")
+);
 
 export const privateRoutes = [
   {
@@ -63,6 +72,10 @@ export const privateRoutes = [
   {
     path: "/counter",
     element: <CounterPage />,
+  },
+  {
+    path: "/registration",
+    element: <RegistrationPage />,
   },
   {
     path: "*",
